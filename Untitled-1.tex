@@ -1,0 +1,1055 @@
+\documentclass{ctexart}
+\usepackage{amsmath}
+
+\begin{document}
+\title{计算机与人工智能}
+\section{概述}
+\subsection{人工智能的基本概念}
+
+\begin{description}
+  \item[弱人工智能ANI] 完成特定任务,不具有自主意识
+  \item[强人工智能AGI] 通用人工智能，能执行所有任务
+  \item[超人工智能ASI] 具有自我意识包括独立自主的价值观
+\end{description}
+\begin{itemize}
+  \item 大模型的涌现能力
+\end{itemize}
+
+\subsection{人工智能的典型应用}
+\begin{itemize}
+  \item Google Brain
+  \item Deep Face（人脸识别）
+  \item Microsoft speech recognition,translation and synthesis（微软语音识别、翻译和合成）
+\end{itemize}
+
+\subsection{计算机发展}
+\begin{tabular}{ccc}
+  图灵机 & 冯·诺依曼结构 & ENIAC \\
+\end{tabular}
+奠定了现代计算机的基础。
+
+\subsection{计算思维的基本概念}
+运用计算机科学的基础概念进行问题求解、系统设计、
+以及人类行为理解等涵盖计算机科学之广度的一系列思维活动。
+
+计算思维的特征：
+\begin{itemize}
+  \item 人的思维方式
+  \item 可由人类执行
+  \item 一种思想概念
+\end{itemize}
+
+\subsection{图灵贡献}
+\noindent
+\begin{tabular}{|l|l|l|l|}
+\hline
+图灵机 & 计算所有直觉上可计算的函数 & 计算机科学之父 & 可计算问题 \\
+图灵测试 & 测试机器是否具有智能 & 人工智能之父 & 人工智能测试问题 \\
+\hline
+\end{tabular}
+\newpage
+\section{计算机信息数字化基础}
+\subsection{二进制、十六进制}
+\noindent
+二进制Binary
+\begin{equation*}
+  (1001)_2 = 1001\text{B}
+\end{equation*}
+十六进制Hexademical
+\begin{equation*}
+  (1001)_{16} = 1001\text{H}
+\end{equation*}
+\subsection{数制间转换}
+\begin{description}
+  \item[将R进制转换为十进制] 按权展开法
+  \item[将十进制转换为R进制] 整数除R倒取余数，小数乘R正取整数
+\end{description}
+\subsection{原码、补码计算}
+\begin{tabular}{c|cc}
+  \hline
+  \hline
+  十进制 & 14 & -22 \\
+  二进制 & 1110 & -10110 \\
+  \hline
+  原码 & 0000 1110 & 1001 0110 \\
+  反码 & 0000 1110 & 1110 1001 \\
+  补码 & 0000 1110 & 1110 1010 \\
+  \hline
+  \hline
+\end{tabular}
+\subsection{浮点数表示}
+浮点数表示形式：$X=\pm \text{尾数}\times 2^{\text{阶}}$
+
+\begin{tabular}{c|cc|cc|c}
+  \hline
+  精度 & 阶符 & 阶码 & 数符 & 尾数 & 总位数 \\
+  \hline
+  单精度 & 1位 & 7位 & 1位 & 23位 & 32位4字节 \\
+  \hline
+  双精度 & 1位 & 11位 & 1位 & 51位 & 64位8字节 \\
+  \hline
+\end{tabular}
+
+\subsection{逻辑运算}
+\begin{tabular}{cccc}
+  \hline
+  非 & 与 & 或 & 异或 \\
+  NOT & AND & OR & XOR \\
+  \hline
+\end{tabular}
+（按运算顺序从左到右排列）
+
+\subsection{西文字符编码}
+\begin{description}
+  \item[ASCII码] 7位编码，128个字符
+\end{description}
+
+\subsection{汉字字符编码}
+\begin{description}
+  \item[汉字输入码] 键盘输入
+  \item[汉字国标码] 信息交换
+  \item[汉字机内码] 计算机内部存储
+  \item[汉字字形码] 记录字形点阵
+\end{description}
+
+\subsection{模数转换器ADC}
+\noindent
+音频信息处理时，将模拟信号转换为数字信号的装置。
+\subsection{音频编码}
+\begin{center}
+  采样——量化——编码
+\end{center}
+
+\begin{equation*}
+  \text{存储量（字节数）}=\text{采样频率}\times\text{采样精度}\times\text{声道数}
+\end{equation*}
+
+\subsection{图像编码}
+\begin{itemize}
+\item 按颜色分类：
+
+\begin{tabular}{ccc}
+  \hline
+  二值图像 & 灰度图像 & 彩色图像 \\
+  \hline
+\end{tabular}
+
+\item 主要参数：
+
+\begin{tabular}{ccc}
+  \hline
+  尺寸 & 图像大小 & 图像像素点个数\\
+  分辨率 & 图像清晰度 & 注意屏幕分辨率与图像分辨率的区别 \\
+  色深 & 图像RGB颜色值存储大小 & 超过24bit的颜色为真彩色 \\
+  \hline
+\end{tabular}
+
+\item 图像文件大小计算公式：
+\begin{equation*}
+  \text{图像文件大小（字节数）}=\text{图像宽度}\times \text{图像高度}\times \text{色深}/8
+\end{equation*}
+
+\end{itemize}
+\subsection{图形编码}
+\begin{tabular}{lll}
+  \hline
+  图形 & 图元 & \textbf{矢量}图 \\
+  图像 & 像素点 & \textbf{位}图 \\
+  \hline
+\end{tabular}
+
+\subsection{信息编码}
+\noindent 用数字、字母等按规定的方法和位数来代表特定的信息。
+
+\subsection{特征编码}
+\noindent 将原始数据转化为数值形式的数据
+\begin{description}
+\item[类别特征] 离散、非连续
+\end{description}
+\begin{tabular}{lll}
+  \hline
+  \hline
+  小型分类特征 & 类别较少 \\
+  \hline
+  二进制编码 & 用0-1表示类别 \\
+  序列编码 & 用整数表示类别 & 类别具有顺序关系\\
+  独热编码 & 用向量表示类别 & 类别不具有大小关系 \\
+  \hline
+  大型分类特征 & 类别较多 \\
+  \hline
+  哈希编码 & 用较小的数值表示大量数据 & 唯一性、固定长度 \\
+  \hline
+  \hline
+\end{tabular}
+\subsection{熵}
+随机变量不确定性的平均值
+\subsection{数据压缩}
+信源编码时减少数据量的编码方案
+
+\begin{tabular}{cccc}
+  \hline
+  压缩 & 信息 & 压缩率 & 应用 \\
+  \hline
+  无损压缩 & 保留全部信息 & 低 & 文本文件 \\
+  有损压缩 & 牺牲冗余 & 高 & 多媒体文件 \\
+  \hline
+\end{tabular}
+\newpage
+\section{人工智能的计算基础}
+\subsection{人工智能的硬件基础}
+\subsubsection{基本逻辑运算单元}
+
+\begin{tabular}{lclcl}
+  \hline
+  电子元件 & 构成 & 逻辑单元 & 构成 & 计算部件 \\
+  二极管、三极管 & $\rightarrow$ & 逻辑门 & $\rightarrow$ & 加法器 \\
+  \hline
+\end{tabular}
+
+\noindent 逻辑门：与门（AND GATE）、非门（NOT GATE）
+
+\subsubsection{冯·诺依曼型计算机结构}
+\begin{center}
+  \begin{tabular}{|l|l|l|}
+    \hline
+    主要部件 & 功能 & 说明 \\
+    \hline
+    运算器ALU & 算术运算、逻辑运算 & 算术逻辑部件ALU、累加器、通用寄存器、状态寄存器 \\
+    控制器CU & 指令解释、执行控制 & 指令寄存器IR、程序计数器PC、指令译码器ID \\
+    存储器 & 存储数据与指令 & 内存储器、外存储器 \\
+    输入设备 & 输入数据与指令 & 键盘、鼠标等 \\
+    输出设备 & 输出结果 & 显示器、打印机等 \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\subsubsection{计算机存储体系}
+\begin{itemize}
+  \item 内存储器（内存）
+  \begin{description}
+    \item[随机存取存储器RAM] 断电数据消失
+    \item[只读存储器ROM] 写入后无法更改
+  \end{description}
+  \item 外存储器（外存）
+\end{itemize}
+
+\begin{description}
+  \item[位bit] 信息的最小单位
+  \item[字节Byte] 8 bit组成一个字节
+  \item[字word] 计算机处理数据的基本单位，通常为2字节或4字节
+  \item[地址address] 存储单元的编号
+\end{description}
+
+\subsubsection{指令系统}
+\begin{itemize}
+  \item 指令：
+  \begin{itemize}
+    \item 由\textbf{操作码}和\textbf{地址码}组成
+    \item 对应计算机直接实现的基本操作
+  \end{itemize}
+
+  \item 指令系统：
+
+  确定数量指令的总和
+
+  \item 指令功能应包括：
+
+  \begin{tabular}{ccccc}
+    \hline
+    数据传送类 & 算术运算和逻辑运算类 & 程序控制类 & 输入输出类 & 控制和管理机器类 \\
+    \hline
+  \end{tabular}
+
+  \item 指令周期（程序自动控制）：
+
+  取指令——分析指令——执行指令
+
+  \item 指令流水线技术
+\end{itemize}
+\subsubsection{总线}
+计算机系统中各个功能部件（如CPU、内存、I/O设备）之间共享的公共通信干线
+
+\subsection{计算机的软件基础}
+\subsubsection{操作系统}
+\begin{itemize}
+  \item 直接与硬件交流
+  \item 最底层软件
+  \item 管理和控制计算机硬件与软件资源
+  \item 用户通过操作系统来使用计算机系统
+\end{itemize}
+
+
+\subsubsection{多级存储体系}
+\begin{tabular}{cccc}
+  && 外存——内存——多级Cache——CPU寄存器 \\
+  \hline
+  存取速度 & 低 & $\rightarrow $ & 高 \\
+  存储容量 & 小 & $\rightarrow $ & 大 \\
+  存储成本 & 高 & $\rightarrow $ & 低  \\
+\end{tabular}
+
+\subsubsection{磁盘管理}
+\begin{itemize}
+\item 磁盘数据存取：
+
+\begin{itemize}
+  \item 以“簇”为单位
+  \item 1个扇区（Sector）=512字节
+  \item 调用磁盘驱动程序
+\end{itemize}
+
+\item 磁盘主要区域：
+\begin{description}
+  \item[保留扇区] 计算机开机自检和启动操作系统
+  \item[文件分配表区] 文件在数据区存储的位置
+  \item[根目录区] 文件在数据区存储的起始单元
+  \item[数据区] 文件化整为零后存放的区域
+\end{description}
+\end{itemize}
+\subsubsection{文件系统}
+多级目录结构
+
+完整的文件描述（盘符、路径、文件名.扩展名）
+
+\subsubsection{进程}
+\begin{itemize}
+\item 概念：
+\begin{description}
+  \item[程序] 指令序列
+  \item[作业] 面向用户的程序的执行实例
+  \item[进程] 面向计算机的程序的执行实例
+  \item[线程] 进程中的一个执行单元
+\end{description}
+
+\item 进程状态：
+\begin{description}
+  \item[就绪态] 等待CPU分配时间片
+  \item[运行态] 正在使用CPU
+  \item[阻塞态] 等待某事件发生（I/O请求、申请缓冲空间……）
+\end{description}
+
+\item 动态\textbf{调度}：
+
+进程在三种状态间转换
+\end{itemize}
+\subsection{程序与算法基础}
+\subsubsection{计算机语言发展}
+\begin{tabular}{lll}
+  
+  机器语言 & 二进制指令 & 机器直接运行 \\
+  汇编语言 & 助记符表示指令 & 汇编程序翻译 \\
+  高级语言 & 英语和数学语言 & 编译器或解释器翻译 \\
+  
+\end{tabular}
+
+\subsubsection{图灵机}
+\noindent 组成：
+\begin{itemize}
+  \item 无限长纸带
+  \item 读写头
+  \item 状态寄存器
+  \item 控制器
+\end{itemize}
+
+\noindent 图灵论题：
+
+一个\textbf{可计算}问题是“当且仅当它在图灵机上经过有限步骤之后可以得到正确的结果”
+
+\subsubsection{计算复杂度}
+\noindent 库克论题：
+
+一个问题是\textbf{实际可计算}的当且仅当它
+能够在图灵机上经过多项式步骤得到正确结果
+
+\begin{description}
+  \item[时间复杂度] 计算所需的步数或指令条数
+  \item[空间复杂度] 计算所需的存储单元数
+\end{description}
+
+\subsubsection{算法}
+\begin{itemize}
+\item 算法：
+
+解决问题的有限步骤
+
+\item 算法特性：
+\begin{description}
+  \item[有穷性] 算法步骤有限
+  \item[确定性] 算法步骤含义确定
+  \item[有效性] 每一步都能被执行
+  \item[有零个或多个输入] 
+  \item[有一个或多个输出]
+\end{description}
+\end{itemize}
+\subsubsection{流程图}
+\begin{itemize}
+\item 算法的图形化表示
+
+\begin{itemize}
+  \item 起止框
+  \item 输入输出框
+  \item 处理框
+  \item 判断框
+  \item 流向线
+  \item 连接点
+  \item 注释框
+\end{itemize}
+
+\item 基本结构：
+
+\begin{center}
+  \begin{tabular}{ccc}
+    顺序结构 & 分支结构 & 循环结构 \\
+  \end{tabular}
+\end{center}
+
+\item 常见算法：
+
+\begin{center}
+  \begin{tabular}{cccc}
+    求和算法 & 绘图算法 & 排序算法 & 穷举算法 \\
+  \end{tabular}
+\end{center}
+\end{itemize}
+\subsection{并行计算机体系结构}
+\subsubsection{并行计算}
+\begin{itemize}
+\item 并行计算：
+
+同时使用多台计算机或多处理器同时工作以提高计算速度和处理能力的计算方式。
+
+\item 特点：
+
+软件算法复杂、硬件结构复杂（多核微处理器）
+\end{itemize}
+\subsubsection{摩尔定律}
+\noindent 微处理器的处理能力每\textbf{18个月到24个月}将增加一
+倍
+\newpage
+\section{符号智能}
+\subsection{搜索与问题求解}
+\begin{description}
+  \item[搜索] 人工智能技术中进行问题求解的基本技术
+  \item[状态空间] 对智能体和环境当前情形的描述
+  \item[动作] 智能体在某一状态下可执行的操作
+  \item[问题的解] 初始状态到目标状态的一组行动序列
+  \item[路径/代价] 一个完整的状态序列
+  \item[最优解] 代价最小的解
+\end{description}
+
+\subsection{状态空间表示法}
+
+\begin{description}
+  \item[状态] 一组数据：$S_k=\left\{S_{k0},S_{k1},\dots\right\} $
+  \item[操作（算符）] 
+  \item[状态空间] 四元组：$(S,O,S_0,G)$ 
+\end{description}
+其中，  
+\begin{itemize}
+  \item $S$为\textbf{状态}集合
+  \item $O$为\textbf{操作}集合
+  \item $S_0$为\textbf{初始状态}
+  \item $G$为若干具体状态或满足某些性质的\textbf{路径}信息
+\end{itemize}
+\subsection{盲目图搜索策略}
+
+\begin{tabular}{l|l}
+  \hline
+  \textbf{广度优先搜索}（BFS） & \textbf{深度优先搜索}（DFS） \\
+  \hline
+  优先选择\textbf{最浅}节点扩展 & 优先选择\textbf{最深}节点扩展 \\
+  \textbf{逐层}扩展 & \textbf{盲目}搜索 \\
+  \textbf{高价}搜索 & \textbf{低价}搜索 \\
+  有解问题能求最优解 & 有解问题不一定能求解 \\
+  \hline
+\end{tabular}
+
+\subsection{启发式搜索}
+\noindent 运用条件：
+\begin{itemize}
+  \item 问题没有明确的解
+  \item 状态空间特别大
+\end{itemize}
+
+\noindent 估价函数$f(n)$：
+\begin{equation*}
+  f(n)=g(n)+h(n)
+\end{equation*}
+其中，$g(n)$为从初始状态$S_0$到节点$n$的\textbf{实际代价}，启发函数$h(n)$为从节点$n$到目标状态$S_g$的最优路径的\textbf{估计代价}。
+
+\begin{itemize}
+  \item $h(n)$占比大时，趋向深度优先搜索
+  \item $h(n)$占比小时，趋向广度优先搜索
+\end{itemize}
+
+在A算法中，若启发函数$h(n)<h^*(n)$，则称$h(n)$为\textbf{一致启发函数}，此时A算法能得到最优解，称为\textbf{A*算法}。
+
+如果启发函数h(n)满足以下条件：
+\begin{equation*}
+  h(n_i)-h(n_j)\leq C(n_i,n_j) \text{且} h(t) = 0
+\end{equation*}
+
+其中$n_j$是$n_i$的子节点，$t$目标节点，$C(n_i,n_j)$是$n_j$与$n_i$间的\textbf{耗散值}，
+则称启发函数h(n)满足\textbf{单调限制条件}。
+
+\subsection{知识表示}
+人类知识符号化或模型化，转换为机器内部的一种数据结构
+
+\begin{itemize}
+  \item 一阶谓词逻辑表示法
+  \item 产生式表示法
+  \item 语义网络表示法
+  \item 框架表示法
+\end{itemize}
+
+
+\subsection{一阶谓词逻辑表示法}
+\begin{equation*}
+  P(x_1,x_2,\dots,x_n)
+\end{equation*}
+其中，$P$为谓词，$x_1,x_2,\dots,x_n$为个体
+
+\begin{itemize}
+  \item 谓词连接词：
+
+  \begin{tabular}{cccc}
+    \hline
+    否定 & 合取 & 析取 & 蕴涵 \\
+    $\neg$ & $\land$ & $\lor$ & $\rightarrow$ \\
+    \hline
+  \end{tabular}
+  \item 知识类别：
+  \begin{description}
+    \item[事实性知识] 合取、析取
+    \item[规则性知识] 蕴涵
+  \end{description}
+  \item 特点
+  \begin{itemize}
+    \item 优点：
+    \begin{description}
+      \item[自然性] 与自然语言相近
+      \item[精确性] 只有真假两种取值
+      \item[易实现] 便于计算机处理
+      \item[严密性] 有严格的语法和语义规则
+    \end{description}
+    \item 缺点：
+    \begin{description}
+      \item[表达能力有限] 无法表示不确定性知识
+      \item[推理能力有限] 无法进行复杂推理
+      \item[知识表示有限] 难以表示启发性知识或元知识
+    \end{description}
+  \end{itemize}
+\end{itemize}
+\subsection{知识推理}
+\begin{description}
+  \item[确定性推理] 推理时所用的知识与证据都是确定的，推出的
+结论也是确定的，其真值或者为真或者为假。
+  \item[不确定性推理] 推理时所用的知识与证据是不确定的，推出的结论也是不确定的。
+  \begin{itemize}
+    \item 似然推理
+    \item 近似推理（模糊推理）
+  \end{itemize}
+\end{description}
+\newpage
+\section{机器学习基础}
+\subsection{机器学习的基本概念}
+\noindent 机器学习：
+
+通过算法解析数据、提取模式，并将这些模式转化为可用于预测或决策的模型
+
+\noindent 机器学习类型：
+\begin{description}
+  \item[监督学习] 需要带标签的训练数据完成学习
+  \begin{itemize}
+    \item 分类
+    \begin{itemize}
+      \item K最近邻（KNN）
+      \item 决策树
+    \end{itemize}
+    \item 回归
+    \begin{itemize}
+      \item 线性回归
+      \item LASSO回归
+    \end{itemize}
+  \end{itemize}
+  \item[无监督学习] 没有标签或正确答案的情况下，自己探索数据内在结构或关系
+  \begin{itemize}
+    \item 聚类
+    \begin{itemize}
+      \item K-means
+      \item 均值漂移
+    \end{itemize}
+    \item 降维 
+    \begin{itemize}
+      \item PCA
+      \item SVD
+      \item t-SNE
+      \item LLE
+    \end{itemize}
+  \end{itemize}
+  \item[强化学习] 基于行为结果的奖励反馈调整策略
+\end{description}
+
+\subsection{回归}
+\begin{itemize}
+\item 回归：
+
+预测数值
+
+\item 多元线性回归的模型函数如下：
+\begin{equation*}
+y=\beta_0+\beta_1x_1+\beta_2x_2+\dots+\beta_nx_n+\epsilon 
+\end{equation*}
+其中：$y$是因变量，$x_1,x_2,\dots,x_n$是自
+变量，$\beta_0$是截距项，$\beta_1,\beta_2,\dots \beta_n$ 是
+各自变量的系数，$\epsilon$是误差项。
+
+\item 梯度下降法：
+
+迭代优化残差平方和（RSS）不断趋于最小
+\begin{equation*}
+  \text{RSS}(\beta_0,\beta_1)=\sum_{i=1}^{n}(y_i-\hat{y_i})^2=\sum_{i=1}^{n}(y_i-\beta_0-\beta_1x_i)^2
+\end{equation*}
+\end{itemize}
+\subsection{分类}
+\begin{itemize}
+\item 分类：
+
+将数据划分为不同类别
+
+\item K最近邻（KNN）算法：
+
+\begin{description}
+  \item[数据准备] 数据清洗，数据处理，将每条数据整理成向量
+  \item[计算距离] 计算待分类数据与训练集中每条数据的距离
+  \item[选择K值] 选择距离最近的K个数据点
+  \item[决策分类] 从K个数据点中选择出现频率最高的类别作为待分类数据的类别
+\end{description}
+
+不同K值分类准确率不同
+
+\item 决策树：
+
+做决策时层层递进的思考过程的监督学习模型
+\end{itemize}
+\subsection{降维}
+\noindent 降维：简化模型、避免维度灾难
+
+\noindent \textbf{主成分分析}（PCA）：
+
+通过线性变换将数据从高维空间映射到数据\textbf{方差最大}的低维空间
+
+\begin{equation*}
+  X_c = X - \bar{X}
+\end{equation*}
+$X$为数据矩阵，$\bar{x}$为平均数据，$X_c$为中心化后的数据矩阵
+\begin{equation*}
+  \lambda_i=\frac{1}{n-1}(X_cv_i)^T(X_cv_i)
+\end{equation*}
+\begin{equation*}
+  \sum v_i=\lambda_iv_i
+\end{equation*}
+$\lambda_i$为$X$最大的特征值，则$v_i$为最大特征值对应的特征向量
+
+\subsection{聚类}
+\noindent 聚类：
+
+将事物根据其特征分组成多个簇
+
+\noindent \textbf{K均值算法}（K-means）步骤：
+
+\begin{description}
+  \item[选择K值] 确定要分成的簇的数量
+  \item[初始化质心] 随机选择位置或数据点作为初始质心
+  \item[分配数据点] 将每个数据点分配给距离最近的质心所属的簇
+  \item[更新质心] 计算每个簇的质心，通常为所有数据点的均值
+  \item[重复迭代] 重复步骤3和4，直到质心变化极小或达到预设的迭代次数
+\end{description}
+
+\subsection{强化学习}
+\noindent 五个要素：
+\begin{description}
+  \item[环境] 智能体所处的外部世界
+  \item[智能体] 强化学习中的核心部分，嵌入到环境中的决策实体
+  \item[状态] 环境在某一时刻的具体情形
+  \item[动作] 智能体在某一状态下可执行的操作
+  \item[奖励] 智能体执行某一动作后从环境中获得的反馈信号
+\end{description}
+
+\begin{itemize}
+  \item 基于价值函数的间接优化
+  \item 基于策略梯度的直接优化
+\end{itemize}
+
+\noindent Q-learning算法：
+
+
+
+\subsection{过拟合}
+模型过于复杂，以至于很好地拟合了训练数据中的噪声和异常值，导致在新数据上的表现较差。
+\newpage
+\section{神经网络与深度学习}
+\subsection{人工神经网络}
+\noindent 人工神经网络（ANNs）：
+
+模拟生物神经网络结构和功能的计算模型
+
+\noindent 人工神经元：
+
+大量人工神经元相互连接构成人工神经网络
+
+\begin{equation*}
+  y_i=f(\sum_{j=1}^{n}w_{ij}x_j-\theta_i)
+\end{equation*}
+
+其中，
+\begin{description}
+  \item[$\cdot\;x_i$] 输入
+  \item[$\cdot\;w_i$] 权重
+  \item[$\cdot\;\theta_i$] 偏置，微调神经元激活阈值
+  \item[$\cdot\;f(\cdot)$] 激活函数,\textbf{引入非线性}
+  \begin{description}
+    \item[逻辑函数$\sigma$] $\sigma(z)=\frac{1}{1+e^{-z}}$
+    \item[线性整流函数ReLU] $R(z)=\max(0,z)$
+  \end{description}
+  \item[$\cdot\;y_i$] 输出
+\end{description}
+
+\noindent 损失函数（Loss Function）：对输出结果评分
+
+\noindent 二分类交叉熵损失函数(Cross-Entropy) ：
+\begin{equation*}
+  CE=-(y_i\log(\hat{y_i})+(1-y_i)\log(1-\hat{y_i}))
+\end{equation*}
+
+其中，
+\begin{description}
+  \item[$\cdot\;y_i$] 真实标签，取值为0或1，代表两个类别
+  \item[$\cdot\;\hat{y_i}$] 模型预测的概率
+\end{description}
+
+\subsection{前馈神经网络}
+\noindent 信息单向流动：输入层→隐藏层→输出层
+
+\noindent 感知器(Perceptron)：用于模式分类
+
+\begin{tabular}{ccc}
+  \hline
+  感知器 & 非线性分类 & “异或”问题 \\
+  \hline
+  单层感知器 & 不能 & 不能 \\
+  多层感知器 & 能 & 能 \\
+  \hline
+\end{tabular}
+
+\noindent 卷积神经网络：一种前馈神经网络
+
+\begin{description}
+  \item[卷积层] 提取特征，生成特征图
+  将卷积核在输入数据上滑动，并计算卷积核与输入数据的局部区域之间的点积
+  
+  RGB三个通道输出结果相加得到最终结果
+
+  通过多通道多卷积核卷积层提取多种特征
+  
+  参数：
+  
+  \begin{description}
+    \item[填充] 防止图像信息在卷积过程中缩小
+    \item[步幅] 步幅增大，卷积层输出尺寸变小
+  \end{description}
+  \item[池化层] 简化提取的特征
+  平均池化、最大池化
+  \item[全连接层] 整合和转换特征，分类或回归预测
+\end{description}
+
+\subsection{反馈神经网络}
+\noindent 信息循环传递
+
+\noindent 循环神经网络（RNN）：
+\begin{description}
+  \item[构成] 输入层、隐藏层、输出层
+  \item[原理] 隐藏层状态由此刻的输入和上一刻的隐藏层状态同时决定
+\end{description}
+
+\noindent 长短期记忆神经网络(LSTM)：
+\begin{description}
+  \item[引入记忆参数] 更好地保存长距离的序列依赖关系
+  \item[引入遗忘门、输入门、输出门结构] 控制信息结构
+\end{description}
+
+\subsection{深度学习}
+\begin{itemize}
+  \item 基于人工神经网络的智能计算方法
+  \item 机器学习的重要分支
+  \item 核心基础算法：\textbf{卷积神经网络}、反向传播算法、梯度下降优化等关键技术
+\end{itemize}
+
+\noindent 计算机视觉领域的典型应用
+\begin{itemize}
+  \item 图像分类
+  \begin{itemize}
+  \item AlexNet：
+  \begin{description}
+    \item[神经网络层数更多]
+    \item[ReLU作为激活函数] 运算简单
+    \item[随机失活层(Dropout)] 增强模型泛化能力
+  \end{description}
+  \item ResNet：引入残差结构解决\textbf{退化问题}
+  
+  退化问题：更深的网络会伴随梯度消失、梯度爆炸等问题无法收敛，测试数据误差增大，训练数据误差增大
+\end{itemize}
+  \item 图像分割
+  \begin{itemize}
+    \item FCN
+    \item Unet
+  \end{itemize}
+\end{itemize}
+
+\newpage
+\section{生成式人工智能}
+\subsection{生成式人工智能}
+\begin{description}
+  \item[应用场景] 生成文本、生成视频……
+  \item[技术升级] 基于模板与规则→基于深度神经网络、融合专业场景
+  \item[大模型] 
+  \begin{tabular}{lll}
+    \hline
+    视觉 & 语言 & 多模态 \\
+    感知 & 认知 & 内容创作 \\
+    \hline
+  \end{tabular}
+  \item[AI Agent] 感知环境及需求、进行决策和执行动作的智能体
+\end{description}
+
+\subsection{对抗网络}
+\noindent 使用两个网络互相竞争，称之为\textbf{对抗式}(adversarial)结构
+\begin{itemize}
+  \item 生成式对抗网络(GAN)：
+
+  能在非监督学习中生成新样本
+  \item 深度卷积对抗式生成网络(DCGAN):
+  \begin{itemize}
+    \item 有监督学习的CNN与无监督学习的GAN的整合
+    \item 通过编码运算控制人脸图像
+  \end{itemize}
+\end{itemize}
+
+\subsection{Transformer模型}
+\noindent 基于自注意力机制（Self-attention）的神经网络
+
+\noindent 自注意力机制：
+\begin{itemize}
+  \item 优势：
+  \begin{itemize}
+    \item 更好建模\textbf{长距离}依赖关系
+    \item 更好实现\textbf{并行计算}
+  \end{itemize}
+  \item 缺点：
+  \begin{itemize}
+    \item 不采用循环结构或卷积结构
+  \end{itemize}
+\end{itemize}
+
+\noindent 位置向量：
+
+明确单词位置关系，从而明确句子语义
+
+多头注意力机制、缩放点积注意力机制
+
+\noindent 解码器
+
+N层*3个子层 = 3N
+\begin{itemize}
+  \item 掩码多头自注意力子层
+  \item 编码-解码注意力子层
+  \item 前馈网络子层
+\end{itemize}
+每个子层间采用残差连接(residual connection)和层归一化 (layer normalization)。
+
+\noindent 编码-解码注意力子层：
+\begin{itemize}
+  \item 只对\textbf{隐层状态}做注意力计算
+  \item 在解码过程中利用源语言信息
+  \item 查询向量（q）来自\textbf{目标端}隐层状态
+  \item B.	键向量（k）和值向量（v）来自\textbf{源端}隐层状态
+\end{itemize}
+
+\noindent Transformer应用：
+
+自然语言处理、计算机视觉和语音识别以及\textbf{预训练语言模型}
+
+\subsection{视觉处理系统}
+\begin{itemize}
+  \item 图像采集
+  \begin{itemize}
+    \item 纠正几何失真（图像坐标变换）
+    \item 提高视觉质量（灰度映射、 直方图修正）
+    \item 降低噪声干扰（空域滤波）
+  \end{itemize}
+  \item 特征工程：提取各种复杂度的特征（特征点检测）
+  \item 模型训练
+  \item 评价
+\end{itemize}
+
+\subsection{扩散模型}
+\begin{itemize}
+  \item 训练阶段
+
+  向真实动作序列添加噪声→模型学习“如何还原原始动作”
+  \item 生成阶段
+
+  从纯噪声开始→逐步迭代去噪→生成逼真的动作
+\end{itemize}
+
+\subsection{自然语言处理（NLP）}
+
+研究能实现人与计算机之间用自然语言进行通信的各种理论和方法。
+
+\noindent 阶段：
+
+\begin{tabular}{cccc}
+  形式 & 语义 & 推理 & 语用 \\
+\end{tabular}
+
+\subsection{大模型开发}
+\begin{tabular}{llll}
+  \hline
+  预训练 & 通识教育 & 自监督学习 & 海量无标注数据 \\
+  精调 & 专业教育 & & 任务相关少量数据 \\
+  \hline
+\end{tabular}
+
+\subsection{AI Agent}
+\begin{itemize}
+\item AI Agent：
+
+具有自适应性和智能性的软件实体，能代表用户或其它程序，以主动服务的方式完成一项工作。
+
+Agent = LLM + 记忆 + 规划技能+ 工具使用
+\item 多智能体：
+
+一个松散耦合的Agent网络，通过交互、协作进行问题求解
+
+\item 特点：
+
+自主性、反应性、主动性、社会性
+
+\item Agent技术架构：
+
+感知记忆模块、规划决策模块、工具和行动模块
+\end{itemize}
+\section{行为智能与群智能}
+\subsection{行为智能}
+通过\textbf{观察环境}，或通过\textbf{身体与环境的直接相互作用}产生的智能
+\subsection{群智能}
+群居昆虫的集体行为
+
+\noindent 特点：
+
+个体的行为很简单，\textbf{协同工作}时表现出非常复杂（智能）的行为特征
+
+\noindent 蚁群算法：寻找最优路径
+\begin{itemize}
+  \item 要素：
+  \begin{description}
+    \item[信息素] 蚂蚁沿路径释放，随时间推移挥发
+    \item[移动规则] 倾向于走信息素浓度高，路径短的路径
+    \item[启发式信息] 距离、方向、障碍物等，有利于指导蚂蚁移动方向，提高搜索效率
+  \end{description}
+  \item 收敛性：蚁群算法具有较好的收敛性，能够在较短的时间内找到近似最优解
+  \item 参数：信息素挥发速度、蚂蚁数量、移动概率
+  \item 优化方法：遗传算法、粒子群算法等
+  \item 步骤：
+  \begin{enumerate}
+    \item 初始化蚁群
+    \begin{enumerate}
+      \item 每只蚂蚁的方向和位置
+      \item 信息素浓度
+    \end{enumerate}
+    \item 迭代搜索过程
+    \begin{enumerate}
+      \item 蚂蚁根据移动规则运动
+      \item 更新路径信息素浓度
+      \item 重复迭代过程
+    \end{enumerate}
+    \item 最优解输出
+  \end{enumerate}
+\end{itemize}
+
+\subsection{具身智能}
+基于物理身体进行感知和行动的智能系统
+
+\noindent \textbf{虚拟环境}
+\begin{itemize}
+  \item 优势：安全、可扩展
+  \item 要素：模拟器、资产、任务
+  \item 模拟器
+  \begin{itemize}
+    \item 物理仿真：动力学的数学模型
+    \item 感知信号渲染：对机器人和周围环境的观测
+    \item 要素：渲染、物理特性、速度、对象类型和属性、动作建模、人机交互界面
+  \end{itemize}
+  \item 资产（静态/可交互）：物体、场景、指令等数据结构
+  \item 任务
+  \begin{itemize}
+    \item 定位 Localization
+    \item 视觉导航 Visual Navigation
+    \item 对话驱动视觉导航 Visual Navigation
+    \item 具身问答 Embodied Question Answering
+  \end{itemize}
+\end{itemize}
+\noindent \textbf{Sim2Real迁移}：环境→仿真→任务
+
+\subsection{进化计算}
+\noindent 概念：
+\begin{description}
+  \item[进化计算] 模仿生物遗传并运用于复杂的优化问题
+  \item[遗传算法] 基于进化过程中信息遗传机制和优胜劣汰自然选择原则的算法
+  \item[基本遗传算法] Simple Genetic Algorithm(SGA)
+\end{description}
+
+\noindent 要素：
+\begin{description}
+  \item[染色体编码] 将问题的解空间编码为染色体，用于遗传算法操作
+  \item[适应度函数] 评估染色体好坏
+  \item[遗传算子]
+  \begin{description}
+    \item[选择算子/复制算子] 挑选一部分父代个体进入子代
+    \item[交叉算子/杂交算子] 挑选两个个体交换部分染色体形成新的个体
+    \item[变异算子] 改变染色体基因的值
+  \end{description}
+  \item[参数]
+  \begin{description}
+    \item[N] 群体大小
+    \item[T] 进化代数
+    \item[Pc] 交叉概率（0.4-0.99）
+    \item[Pm] 变异概率（0.0001-0.1）
+  \end{description}
+  \item[步骤]
+  \begin{enumerate}
+    \item 初始化群体：字符串编码、随机生成个体
+    \item 迭代：计算个体适应值、通过三种算子（选择、杂交、变异）产生子代
+    \item 计算最高适应值，输出最优值
+\end{description}
+\newpage
+\section{人工智能系统与应用}
+\subsection{自动驾驶系统}
+\begin{itemize}
+  \item 分级
+\begin{itemize}
+  \item 环境感知系统
+  \item 中央决策系统
+  \item 底层执行系统
+\end{itemize}
+\end{itemize}
+
+
+
+
+
+
+
+
+
+\end{document}
