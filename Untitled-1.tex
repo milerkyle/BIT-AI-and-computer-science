@@ -1,6 +1,8 @@
 \documentclass{ctexart}
 \usepackage{amsmath}
 
+\setlength{\parskip}{1em}
+
 \begin{document}
 \title{计算机与人工智能}
 \section{概述}
@@ -78,15 +80,17 @@
   \hline
 \end{tabular}
 \subsection{浮点数表示}
-浮点数表示形式：$X=\pm \text{尾数}\times 2^{\text{阶}}$
+浮点数表示形式：$X=\pm \textbf{尾数}\times 2^{\textbf{阶}}$
 
-\begin{tabular}{c|cc|cc|c}
+
+\begin{tabular}{c|ccccc|c}
   \hline
-  精度 & 阶符 & 阶码 & 数符 & 尾数 & 总位数 \\
+  & & & 浮点数表示 & & & \\
   \hline
-  单精度 & 1位 & 7位 & 1位 & 23位 & 32位4字节 \\
+  精度 & 阶符 & 阶码 & \vline & 数符 & 尾数 & 总位数 \\
   \hline
-  双精度 & 1位 & 11位 & 1位 & 51位 & 64位8字节 \\
+  单精度 & 1位 & 7位 & \vline & 1位 & 23位 & 32位4字节 \\
+  双精度 & 1位 & 11位 & \vline & 1位 & 51位 & 64位8字节 \\
   \hline
 \end{tabular}
 
@@ -116,37 +120,37 @@
 \noindent
 音频信息处理时，将模拟信号转换为数字信号的装置。
 \subsection{音频编码}
-\begin{center}
-  采样——量化——编码
-\end{center}
+\begin{enumerate}
+  \item 采样
+  \item 量化
+  \item 编码
+\end{enumerate}
 
 \begin{equation*}
-  \text{存储量（字节数）}=\text{采样频率}\times\text{采样精度}\times\text{声道数}
+  \textbf{存储量（字节数）}=\textbf{采样频率}\times\textbf{采样精度}\times\textbf{声道数}
 \end{equation*}
 
 \subsection{图像编码}
 \begin{itemize}
-\item 按颜色分类：
+  \item 按颜色分类：
+  \begin{itemize}
+    \item 二值图像
+    \item 灰度图像
+    \item 彩色图像
+  \end{itemize}
+  \item 主要参数：
 
 \begin{tabular}{ccc}
   \hline
-  二值图像 & 灰度图像 & 彩色图像 \\
-  \hline
-\end{tabular}
-
-\item 主要参数：
-
-\begin{tabular}{ccc}
-  \hline
-  尺寸 & 图像大小 & 图像像素点个数\\
-  分辨率 & 图像清晰度 & 注意屏幕分辨率与图像分辨率的区别 \\
-  色深 & 图像RGB颜色值存储大小 & 超过24bit的颜色为真彩色 \\
+  \textbf{尺寸} & 图像大小 & 图像像素点个数\\
+  \textbf{分辨率} & 图像清晰度 & 注意屏幕分辨率与图像分辨率的区别 \\
+  \textbf{色深} & 图像RGB颜色值存储大小 & 超过24bit的颜色为真彩色 \\
   \hline
 \end{tabular}
 
 \item 图像文件大小计算公式：
 \begin{equation*}
-  \text{图像文件大小（字节数）}=\text{图像宽度}\times \text{图像高度}\times \text{色深}/8
+  \textbf{图像文件大小（字节数）}=\textbf{图像宽度}\times \textbf{图像高度}\times \textbf{色深}/8
 \end{equation*}
 
 \end{itemize}
@@ -154,6 +158,7 @@
 \begin{tabular}{lll}
   \hline
   图形 & 图元 & \textbf{矢量}图 \\
+  \hline
   图像 & 像素点 & \textbf{位}图 \\
   \hline
 \end{tabular}
@@ -162,20 +167,20 @@
 \noindent 用数字、字母等按规定的方法和位数来代表特定的信息。
 
 \subsection{特征编码}
-\noindent 将原始数据转化为数值形式的数据
+\noindent 将原始数据转化为数值形式的数据，用以\textbf{分类}
 \begin{description}
-\item[类别特征] 离散、非连续
+  \item[类别特征] 离散、非连续
 \end{description}
 \begin{tabular}{lll}
   \hline
   \hline
-  小型分类特征 & 类别较少 \\
+  \textbf{小型分类特征} & 类别较少 \\
   \hline
   二进制编码 & 用0-1表示类别 \\
   序列编码 & 用整数表示类别 & 类别具有顺序关系\\
   独热编码 & 用向量表示类别 & 类别不具有大小关系 \\
   \hline
-  大型分类特征 & 类别较多 \\
+  \textbf{大型分类特征} & 类别较多 \\
   \hline
   哈希编码 & 用较小的数值表示大量数据 & 唯一性、固定长度 \\
   \hline
@@ -191,7 +196,7 @@
   压缩 & 信息 & 压缩率 & 应用 \\
   \hline
   无损压缩 & 保留全部信息 & 低 & 文本文件 \\
-  有损压缩 & 牺牲冗余 & 高 & 多媒体文件 \\
+  有损压缩 & 牺牲部分冗余 & 高 & 多媒体文件 \\
   \hline
 \end{tabular}
 \newpage
@@ -241,31 +246,31 @@
 \end{description}
 
 \subsubsection{指令系统}
-\begin{itemize}
-  \item 指令：
+\begin{description}
+  \item[指令]
   \begin{itemize}
     \item 由\textbf{操作码}和\textbf{地址码}组成
     \item 对应计算机直接实现的基本操作
   \end{itemize}
+  \item[指令系统] 确定数量指令的总和
+  \item[指令应包括的功能]
 
-  \item 指令系统：
+  \begin{itemize}
+    \item 数据传送类
+    \item 算术运算和逻辑运算类
+    \item 程序控制类
+    \item 输入输出类
+    \item 控制和管理机器类
+  \end{itemize}
+  \item[指令周期（程序自动控制）]
 
-  确定数量指令的总和
-
-  \item 指令功能应包括：
-
-  \begin{tabular}{ccccc}
-    \hline
-    数据传送类 & 算术运算和逻辑运算类 & 程序控制类 & 输入输出类 & 控制和管理机器类 \\
-    \hline
-  \end{tabular}
-
-  \item 指令周期（程序自动控制）：
-
-  取指令——分析指令——执行指令
-
-  \item 指令流水线技术
-\end{itemize}
+  \begin{enumerate}
+  \item 取指令
+  \item 分析指令
+  \item 执行指令
+  \end{enumerate}
+  \item[指令流水线技术]
+\end{description}
 \subsubsection{总线}
 计算机系统中各个功能部件（如CPU、内存、I/O设备）之间共享的公共通信干线
 
@@ -277,7 +282,6 @@
   \item 管理和控制计算机硬件与软件资源
   \item 用户通过操作系统来使用计算机系统
 \end{itemize}
-
 
 \subsubsection{多级存储体系}
 \begin{tabular}{cccc}
@@ -895,11 +899,15 @@ N层*3个子层 = 3N
 \subsection{扩散模型}
 \begin{itemize}
   \item 训练阶段
-
-  向真实动作序列添加噪声→模型学习“如何还原原始动作”
+  \begin{enumerate}
+    \item 向真实动作序列添加噪声
+    \item 模型学习“如何还原原始动作”
+  \end{enumerate}
   \item 生成阶段
-
-  从纯噪声开始→逐步迭代去噪→生成逼真的动作
+  \begin{enumerate}
+    \item 从纯噪声开始逐步迭代去噪
+    \item 生成逼真的动作
+  \end{enumerate}
 \end{itemize}
 
 \subsection{自然语言处理（NLP）}
@@ -908,9 +916,12 @@ N层*3个子层 = 3N
 
 \noindent 阶段：
 
-\begin{tabular}{cccc}
-  形式 & 语义 & 推理 & 语用 \\
-\end{tabular}
+\begin{enumerate}
+  \item 形式
+  \item 语义
+  \item 推理
+  \item 语用 
+\end{enumerate}
 
 \subsection{大模型开发}
 \begin{tabular}{llll}
@@ -979,27 +990,31 @@ Agent = LLM + 记忆 + 规划技能+ 工具使用
 
 \subsection{具身智能}
 基于物理身体进行感知和行动的智能系统
-
-\noindent \textbf{虚拟环境}
-\begin{itemize}
-  \item 优势：安全、可扩展
-  \item 要素：模拟器、资产、任务
-  \item 模拟器
-  \begin{itemize}
-    \item 物理仿真：动力学的数学模型
-    \item 感知信号渲染：对机器人和周围环境的观测
-    \item 要素：渲染、物理特性、速度、对象类型和属性、动作建模、人机交互界面
-  \end{itemize}
-  \item 资产（静态/可交互）：物体、场景、指令等数据结构
-  \item 任务
+\par\noindent\textbf{虚拟环境}
+\begin{description}
+  \item[优势]安全、可扩展
+  \item[要素]模拟器、资产、任务
+  \item[模拟器] \phantom{}
+  \begin{description}
+    \item[物理仿真] 动力学的数学模型
+    \item[感知信号渲染] 对机器人和周围环境的观测
+    \item[要素] 渲染、物理特性、速度、对象类型和属性、动作建模、人机交互界面
+  \end{description}
+  \item[资产]（静态/可交互）：物体、场景、指令等数据结构
+  \item[任务] \phantom{}
   \begin{itemize}
     \item 定位 Localization
     \item 视觉导航 Visual Navigation
     \item 对话驱动视觉导航 Visual Navigation
     \item 具身问答 Embodied Question Answering
   \end{itemize}
-\end{itemize}
-\noindent \textbf{Sim2Real迁移}：环境→仿真→任务
+\end{description}
+\par\noindent\textbf{Sim2Real迁移}：
+\begin{enumerate}
+  \item 环境
+  \item 仿真
+  \item 任务
+\end{enumerate}
 
 \subsection{进化计算}
 \noindent 概念：
@@ -1013,24 +1028,25 @@ Agent = LLM + 记忆 + 规划技能+ 工具使用
 \begin{description}
   \item[染色体编码] 将问题的解空间编码为染色体，用于遗传算法操作
   \item[适应度函数] 评估染色体好坏
-  \item[遗传算子]
+  \item[遗传算子] \phantom{}
   \begin{description}
     \item[选择算子/复制算子] 挑选一部分父代个体进入子代
     \item[交叉算子/杂交算子] 挑选两个个体交换部分染色体形成新的个体
     \item[变异算子] 改变染色体基因的值
   \end{description}
-  \item[参数]
+  \item[参数] \phantom{}
   \begin{description}
     \item[N] 群体大小
     \item[T] 进化代数
     \item[Pc] 交叉概率（0.4-0.99）
     \item[Pm] 变异概率（0.0001-0.1）
   \end{description}
-  \item[步骤]
+  \item[步骤] \phantom{}
   \begin{enumerate}
     \item 初始化群体：字符串编码、随机生成个体
     \item 迭代：计算个体适应值、通过三种算子（选择、杂交、变异）产生子代
     \item 计算最高适应值，输出最优值
+  \end{enumerate}
 \end{description}
 \newpage
 \section{人工智能系统与应用}
