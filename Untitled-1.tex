@@ -1,7 +1,18 @@
 \documentclass{ctexart}
 \usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{float}
 
-\setlength{\parskip}{1em}
+\usetikzlibrary{shapes,arrows,arrows.meta,positioning,calc,shadows,graphs}
+
+\tikzset{
+  inline node/.style = {rectangle,minimum height = 0.8 em,anchor = base},
+  inline arrow/.style = {->,>=stealth}
+  startstop/.style = {rectangle,rounded corners,text centered},
+  process/.style = {rectangle,text centered},
+  decision/.style = {diamond,text centered},
+  arrow/.style = {thick,->,>=stealth}
+}
 
 \begin{document}
 \title{计算机与人工智能}
@@ -206,8 +217,8 @@
 
 \begin{tabular}{lclcl}
   \hline
-  电子元件 & 构成 & 逻辑单元 & 构成 & 计算部件 \\
-  二极管、三极管 & $\rightarrow$ & 逻辑门 & $\rightarrow$ & 加法器 \\
+  电子元件 & $\xrightarrow{\text{构成}} $ & 逻辑单元 & $\xrightarrow{\text{构成}} $ & 计算部件 \\
+  二极管、三极管 & $\xrightarrow{\text{构成}} $ & 逻辑门 & $\xrightarrow{\text{构成}} $ & 加法器 \\
   \hline
 \end{tabular}
 
@@ -247,14 +258,13 @@
 
 \subsubsection{指令系统}
 \begin{description}
-  \item[指令]
+  \item[指令] \phantom{}
   \begin{itemize}
     \item 由\textbf{操作码}和\textbf{地址码}组成
     \item 对应计算机直接实现的基本操作
   \end{itemize}
   \item[指令系统] 确定数量指令的总和
-  \item[指令应包括的功能]
-
+  \item[指令应包括的功能] \phantom{}
   \begin{itemize}
     \item 数据传送类
     \item 算术运算和逻辑运算类
@@ -262,8 +272,7 @@
     \item 输入输出类
     \item 控制和管理机器类
   \end{itemize}
-  \item[指令周期（程序自动控制）]
-
+  \item[指令周期（程序自动控制）] \phantom{}
   \begin{enumerate}
   \item 取指令
   \item 分析指令
@@ -285,11 +294,13 @@
 
 \subsubsection{多级存储体系}
 \begin{tabular}{cccc}
+  \hline
   && 外存——内存——多级Cache——CPU寄存器 \\
   \hline
-  存取速度 & 低 & $\rightarrow $ & 高 \\
-  存储容量 & 小 & $\rightarrow $ & 大 \\
-  存储成本 & 高 & $\rightarrow $ & 低  \\
+  存取速度 & 低 & $\xrightarrow{\phantom{外存——内存——多级Cache——CPU寄存器}}$ & 高 \\
+  存储容量 & 小 & $\xrightarrow{\phantom{外存——内存——多级Cache——CPU寄存器}}$ & 大 \\
+  存储成本 & 高 & $\xrightarrow{\phantom{外存——内存——多级Cache——CPU寄存器}}$ & 低  \\
+  \hline
 \end{tabular}
 
 \subsubsection{磁盘管理}
@@ -297,9 +308,9 @@
 \item 磁盘数据存取：
 
 \begin{itemize}
-  \item 以“簇”为单位
-  \item 1个扇区（Sector）=512字节
-  \item 调用磁盘驱动程序
+  \item 以\textbf{簇}为单位
+  \item 1个\textbf{扇区}（Sector）=512字节
+  \item 调用磁盘\textbf{驱动程序}
 \end{itemize}
 
 \item 磁盘主要区域：
@@ -386,26 +397,138 @@
 \end{description}
 \end{itemize}
 \subsubsection{流程图}
+
+
+
 \begin{itemize}
 \item 算法的图形化表示
 
-\begin{itemize}
-  \item 起止框
-  \item 输入输出框
-  \item 处理框
-  \item 判断框
-  \item 流向线
-  \item 连接点
-  \item 注释框
-\end{itemize}
+\begin{tabular}{ccccccc}
+  \hline
+  起止框 & 输入输出框 & 处理框 & 判断框 & 流向线 & 连接点 & 注释框 \\
+  \hline
+  \begin{tikzpicture}[baseline=(startstop.base),
+    startstop/.style = {rectangle,rounded corners = 9pt,align = center}]
+    \node (startstop)[draw,startstop]{开始/终止};
+  \end{tikzpicture}
+  &
+  \begin{tikzpicture}[baseline=(a.base)]\node[draw,trapezium,trapezium left angle = 70,trapezium right angle = 110,text centered](a){输入/输出};\end{tikzpicture}
+  &
+  \begin{tikzpicture}[baseline=(a.base)]\node[draw,rectangle,text centered](a){处理};\end{tikzpicture}
+  &
+  \begin{tikzpicture}[baseline=(a.base)]\node[draw,diamond,aspect = 2,text centered](a){判断};\end{tikzpicture}
+  &
+  \begin{tikzpicture}[]\draw[->,>={Stealth[round,scale = 1.5]}](0,0)--(1,0) ;\end{tikzpicture}
+  &
+  \begin{tikzpicture}[baseline=(connection.base),connection/.style = {circle,align = center}]\node(connection)[draw,connection]{连接};\end{tikzpicture}
+  &
+  \begin{tikzpicture}[baseline=(annotation.base),
+    node distance = 5mm and 5mm,
+    nrb/.style={
+      rectangle,draw=none,align=center,
+      append after command={
+        \pgfextra{
+          \draw
+          (\tikzlastnode.south east) --
+          (\tikzlastnode.south west) --
+          (\tikzlastnode.north west) --
+          (\tikzlastnode.north east);
+          \draw [-,dotted,thick] (0,0)--(annotation.west);
+        }
+      }
+    }
+  ]
+  \node at (1,0) (annotation)[nrb]{注释};
+  \end{tikzpicture}
+  \\
+  \hline
+\end{tabular}
 
 \item 基本结构：
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[
+      node distance = 5mm and 5mm,
+      startstop/.style = {rectangle,rounded corners,text centered},
+      process/.style = {rectangle,text centered},
+      io/.style = {trapezium,trapezium left angle = 70,trapezium right angle = 110,text centered},
+      arrow/.style = {thick,->,>=stealth}
+    ]
+      \node (start)[draw,startstop]{开始};
+      \node (input)[draw,io,below = of start]{输入半径$R$};
+      \node (process1)[draw,process,below = of input]{令$S=\pi\times R^2$};
+      \node (process2)[draw,process,below = of process1]{令$L=2\pi\times R$};
+      \node (output)[draw,io,below = of process2]{输出周长$L$，面积$S$};
+      \node (stop)[draw,startstop,below = of output]{结束};
+      \draw [thick,->,>=stealth] (start.south) -- (input.north);
+      \draw [thick,->,>=stealth] (input.south) -- (process1.north);
+      \draw [thick,->,>=stealth] (process1.south) -- (process2.north);
+      \draw [thick,->,>=stealth] (process2.south) -- (output.north);
+      \draw [thick,->,>=stealth] (output.south) -- (stop.north);
+    \end{tikzpicture}
+    \caption{顺序结构：输入圆的半径R，输出圆的周长和面积}
+  \end{figure}
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[
+      node distance = 5mm and 5mm,
+      startstop/.style = {rectangle,rounded corners,text centered},
+      process/.style = {rectangle,text centered},
+      io/.style = {trapezium,trapezium left angle = 70,trapezium right angle = 110,text centered},
+      arrow/.style = {thick,->,>=stealth},
+      decision/.style = {diamond,aspect = 2,inner sep = 0,text centered}
+    ]
+      \node (start)[draw,startstop]{开始};
+      \node (input)[draw,io,below = of start]{输入半径$R$};
+      \node (decision)[draw,decision,below = of input] {判断$R>=0$};
+      \node (process1)[draw,process,below = of decision]{令$S=R$};
+      \node (process2)[draw,process,right = of process1]{令$S=-R$};
+      \node (output)[draw,io,below = of process1]{输出$S$};
+      \node (stop)[draw,startstop,below = of output]{结束};
 
-\begin{center}
-  \begin{tabular}{ccc}
-    顺序结构 & 分支结构 & 循环结构 \\
-  \end{tabular}
-\end{center}
+      \path (start.south) edge[thick,->,>=stealth] (input.north);
+      \path (input.south) edge[thick,->,>=stealth] (decision.north);
+      \draw [thick,->,>=stealth] (decision.east) -| (process2.north) node[midway,right]{\tiny 否};
+      \path (decision.south) edge[thick,->,>=stealth] node[midway,right]{\tiny 是} (process1.north);
+      \path (process1.south) edge[thick,->,>=stealth] (output.north);
+      \draw [thick,-] (process2.south) |- ($(process1.south)!0.5!(output.north)$);
+      \path (output.south) edge[thick,->,>=stealth] (stop.north);
+    \end{tikzpicture}
+    \caption{选择结构:输入任意常数R，输出R的绝对值S}
+  \end{figure}
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[
+      node distance = 5mm and 5mm,
+      startstop/.style = {rectangle,rounded corners,text centered},
+      process/.style = {rectangle,text centered},
+      io/.style = {trapezium,trapezium left angle = 70,trapezium right angle = 110,text centered},
+      arrow/.style = {thick,->,>=stealth},
+      decision/.style = {diamond,aspect = 2,inner sep = 0,text centered}
+      ]
+      \node (start)[draw,startstop]{开始};
+      \node (input)[draw,io,below = of start]{输入$K$};
+      \node (definition1)[draw,process,below = of input]{令$I=0$};
+      \node (definition2)[draw,process,below = of definition1]{令$T=1$};
+      \node (decision)[draw,decision,below = of definition2] {判断$I<=K$};
+      \node (process1)[draw,process,below = of decision]{令$T=T+I$};
+      \node (process2)[draw,process,below = of process1]{令$I=I+1$};
+      \node (output)[draw,io,below = of process2]{输出$T$};
+      \node (stop)[draw,startstop,below = of output]{结束};
+
+      \path (start.south) edge[thick,->,>=stealth] (input.north);
+      \path (input.south) edge[thick,->,>=stealth] (definition1.north);
+      \path (definition1.south) edge[thick,->,>=stealth] (definition2.north);
+      \path (definition2.south) edge[thick,->,>=stealth] (decision.north);
+      \path (decision.south) edge[thick,->,>=stealth] node[midway,right]{\tiny 是} (process1.north);
+      \path (process1.south) edge[thick,->,>=stealth] (process2.north);
+      \draw [thick,-] (process2.south) -- ($(process2.south)!0.3!(output.north)$) --++(-2,0) |- ($(definition2.south)!0.5!(decision.north)$);
+      \draw [thick,->,>=stealth] (decision.east) --++(.5,0) |- node[midway,right]{\tiny 否} ($(process2.south)!0.7!(output.north)$) -- (output.north);
+      \path (output.south) edge[thick,->,>=stealth] (stop.north);
+    \end{tikzpicture}
+    \caption{循环结构:输入任意自然数K，输出自然数1到K的和}
+  \end{figure}
+     
 
 \item 常见算法：
 
