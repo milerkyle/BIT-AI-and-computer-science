@@ -1,136 +1,335 @@
-\documentclass{ctexart}
-\usepackage{amsmath}
-\usepackage{tikz}
-\usepackage{float}
+\documentclass[UTF8,a4paper,10pt,twoside]{ctexbook}
 
-\usetikzlibrary{shapes,arrows,arrows.meta,positioning,calc,shadows,graphs}
 
-\tikzset{
-  inline node/.style = {rectangle,minimum height = 0.8 em,anchor = base},
-  inline arrow/.style = {->,>=stealth}
-  startstop/.style = {rectangle,rounded corners,text centered},
-  process/.style = {rectangle,text centered},
-  decision/.style = {diamond,text centered},
-  arrow/.style = {thick,->,>=stealth}
+
+\usepackage{fancyhdr}
+
+\usepackage[
+  portrait,
+  marginparwidth=126pt,
+  marginparsep=5pt,
+  textwidth = 385pt,
+  textheight = 618pt,
+  includehead=false,
+  includefoot=false,
+  ignoremp=false,
+  includemp
+]{geometry}
+
+
+
+\pagestyle{fancy}
+% with this we ensure that the chapter and section
+% headings are in lowercase.
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{} % delete current setting for header and footer
+\fancyhfoffset[LE,RO]{131pt}
+\fancyfoot[LE,RO]{\bfseries\thepage}
+\fancyhead[LE]{\bfseries\rightmark}
+\fancyhead[RO]{\bfseries\leftmark}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+\addtolength{\headheight}{0.5pt} % make space for the rule
+\fancypagestyle{plain}{%
+\fancyhead{} % get rid of headers on plain pages
+\renewcommand{\headrulewidth}{0pt} % and the line
 }
 
-\begin{document}
-\title{计算机与人工智能}
-\section{概述}
-\subsection{人工智能的基本概念}
 
+
+
+
+
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,arrows.meta,positioning,calc,shadows,graphs}
+
+\usepackage[colorlinks = true,linkcolor=black]{hyperref}
+
+
+\usepackage{multicol}
+\usepackage{multirow}
+
+
+
+
+
+
+
+
+
+\title{计算机与人工智能}
+\author{Kyle Miler}
+\begin{document}
+
+
+
+
+
+\maketitle
+\clearpage\thispagestyle{empty}
+
+\frontmatter\tableofcontents
+
+\clearpage\thispagestyle{empty}
+
+\mainmatter
+
+\chapter{概述}
+\section{人工智能}
+\marginpar{
+  \noindent
+  \begin{itemize}
+    \item 大模型的\textbf{涌现能力}
+  \end{itemize}
+}
 \begin{description}
   \item[弱人工智能ANI] 完成特定任务,不具有自主意识
   \item[强人工智能AGI] 通用人工智能，能执行所有任务
   \item[超人工智能ASI] 具有自我意识包括独立自主的价值观
 \end{description}
+
+
 \begin{itemize}
-  \item 大模型的涌现能力
+  \item 人工智能的典型应用
+  \begin{itemize}
+    \item Google Brain
+    \item Deep Face（人脸识别）
+    \item Microsoft speech recognition,translation and synthesis\\（微软语音识别、翻译和合成）
+  \end{itemize}
 \end{itemize}
 
-\subsection{人工智能的典型应用}
+\section{计算机与计算思维}
 \begin{itemize}
-  \item Google Brain
-  \item Deep Face（人脸识别）
-  \item Microsoft speech recognition,translation and synthesis（微软语音识别、翻译和合成）
-\end{itemize}
+  \item 计算机发展
 
-\subsection{计算机发展}
-\begin{tabular}{ccc}
-  图灵机 & 冯·诺依曼结构 & ENIAC \\
-\end{tabular}
+\marginpar{\item \textbf{图灵机}}
+
+\fbox{\begin{tabular}{r}
+  \emph{图灵机} \\
+  \emph{冯·诺依曼结构} \\
+  \emph{ENIAC} \\
+\end{tabular}}
 奠定了现代计算机的基础。
-
-\subsection{计算思维的基本概念}
-运用计算机科学的基础概念进行问题求解、系统设计、
-以及人类行为理解等涵盖计算机科学之广度的一系列思维活动。
-
-计算思维的特征：
-\begin{itemize}
-  \item 人的思维方式
-  \item 可由人类执行
-  \item 一种思想概念
+  \item 计算思维
+  
+  运用计算机科学的基础概念进行问题求解、系统设计、
+以及人类行为理解等涵盖计算机科学广度的一系列思维活动。
+\begin{description}
+  \item[特征] \phantom{}
+  \begin{itemize}
+    \item 人的思维方式
+    \item 可由人类执行
+    \item 一种思想概念
+  \end{itemize}
+\end{description}
 \end{itemize}
-
-\subsection{图灵贡献}
+\section{图灵贡献}
 \noindent
+\marginpar{
+  \begin{itemize}
+    \item \textbf{图灵论题}
+  \end{itemize}
+}
 \begin{tabular}{|l|l|l|l|}
 \hline
-图灵机 & 计算所有直觉上可计算的函数 & 计算机科学之父 & 可计算问题 \\
-图灵测试 & 测试机器是否具有智能 & 人工智能之父 & 人工智能测试问题 \\
+\textbf{图灵机} & 计算所有直觉上可计算的函数 & \emph{计算机科学}之父 & \emph{可计算}问题 \\
+\textbf{图灵测试} & 测试机器是否具有智能 & \emph{人工智能}之父 & \emph{人工智能测试}问题 \\
 \hline
 \end{tabular}
-\newpage
-\section{计算机信息数字化基础}
-\subsection{二进制、十六进制}
-\noindent
-二进制Binary
-\begin{equation*}
-  (1001)_2 = 1001\text{B}
-\end{equation*}
-十六进制Hexademical
-\begin{equation*}
-  (1001)_{16} = 1001\text{H}
-\end{equation*}
-\subsection{数制间转换}
+\nopagebreak
+\chapter{计算机信息数字化基础}
+\section{数制}
+\marginpar{
+    \begin{tabular}{rl}
+      二进制 & Binary \\
+      八进制 & Octal \\
+      十进制 & Decimal \\
+      十六进制 & Hexadecimal \\
+    \end{tabular}
+}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{rlll}
+    二进制 & $(1001)_2$ & = 1001B \\
+    八进制 & $(1001)_8$ & = 1001O & = 1001Q \\
+    十进制 & $(1001)_{10}$ & = 1001D \\
+    十六进制 & $(1001)_{16}$ & = 1001H \\
+  \end{tabular}
+\end{table}
+
+
+\section{数制间转换}
 \begin{description}
-  \item[将R进制转换为十进制] 按权展开法
+  \item[将R进制转换为十进制] \textbf{按权展开法：}
+\marginpar{
+  \begin{itemize}
+    \item $(101.01)_2\\=1\times2^2+0\times2^1+1\times2^0\\+0\times2^{-1}+1\times2^{-2}\\=(5.25)_{10}$
+    \item $(304.1)_8\\=3\times8^2+0\times8^1+4\times8^0\\+1\times8^{-1}\\=(196.125)_{10}$
+    \item $(5$CA$)_{16}\\=5\times16^2+12\times16^1+10\times16^0\\=(1482)_{10}$
+  \end{itemize}
+}
+  \begin{equation*}
+    (\overline{a_na_{n-1}\cdots a_1a_0}.\overline{a_{-1}a_{-2}\cdots a_{-m}})_\text{R}=\sum_{i=-m}^{n}a_i\text{R}^i
+  \end{equation*}
   \item[将十进制转换为R进制] 整数除R倒取余数，小数乘R正取整数
 \end{description}
-\subsection{原码、补码计算}
-\begin{tabular}{c|cc}
-  \hline
-  \hline
-  十进制 & 14 & -22 \\
-  二进制 & 1110 & -10110 \\
-  \hline
-  原码 & 0000 1110 & 1001 0110 \\
-  反码 & 0000 1110 & 1110 1001 \\
-  补码 & 0000 1110 & 1110 1010 \\
-  \hline
-  \hline
-\end{tabular}
-\subsection{浮点数表示}
-浮点数表示形式：$X=\pm \textbf{尾数}\times 2^{\textbf{阶}}$
+\section{原码、补码计算}
+\marginpar{
+  \begin{tabular}{|c|cc|}
+    \hline
+    十进制 & 14 & -22 \\
+    二进制 & 1110 & -10110 \\
+    \hline\hline
+    原码 & 0000 1110 & 1001 0110 \\
+    反码 & 0000 1110 & 1110 1001 \\
+    补码 & 0000 1110 & 1110 1010 \\
+    \hline
+  \end{tabular}
+}
 
-
-\begin{tabular}{c|ccccc|c}
-  \hline
-  & & & 浮点数表示 & & & \\
-  \hline
-  精度 & 阶符 & 阶码 & \vline & 数符 & 尾数 & 总位数 \\
-  \hline
-  单精度 & 1位 & 7位 & \vline & 1位 & 23位 & 32位4字节 \\
-  双精度 & 1位 & 11位 & \vline & 1位 & 51位 & 64位8字节 \\
-  \hline
-\end{tabular}
-
-\subsection{逻辑运算}
-\begin{tabular}{cccc}
-  \hline
-  非 & 与 & 或 & 异或 \\
-  NOT & AND & OR & XOR \\
-  \hline
-\end{tabular}
-（按运算顺序从左到右排列）
-
-\subsection{西文字符编码}
 \begin{description}
-  \item[ASCII码] 7位编码，128个字符
+  \item[原码] 分别用0和1代替数的正号和负号，并置
+于最高有效位上，绝对值部分置于右端，中
+间若有空位填上零。
+  \item[反码] 正数的反码表示与其原码表示相同，
+负数的反码表示是把原码除符号位以外的各
+位取反。
+  \item[补码] 
+    \[
+    [\text{X}]_\text{补}=
+    \begin{cases}
+      \text{X},\quad & 0\leq X< 2^{n-1} \\
+      2^n-\left\lvert\text{X}\right\rvert ,\quad & -2^{n-1}\leq\text{X}<0
+    \end{cases}
+    \]
+  \marginpar{\item[补码的表示范围] $\left[-2^{n-1},2^{n-1}-1\right]$}
 \end{description}
+用补码表示
+可用加法代替减法
 
-\subsection{汉字字符编码}
-\begin{description}
-  \item[汉字输入码] 键盘输入
-  \item[汉字国标码] 信息交换
-  \item[汉字机内码] 计算机内部存储
-  \item[汉字字形码] 记录字形点阵
-\end{description}
+补码加法运算规则
+\begin{equation*}
+  \begin{split}
+    [a]_\text{补}+[b]_\text{补} & = 2^n+a+2^n+b \\
+    & = 2^n+(a+b)\qquad\text{丢掉一个模}2^n \\
+    & = [a+b]_\text{补} \\
+  \end{split}
+\end{equation*}
 
-\subsection{模数转换器ADC}
+
+\section{浮点数表示}
+浮点数表示形式：$X=\pm \text{尾数}\times 2^{\text{阶}}$
+
+\marginpar{$
+  (72.45\times10^5)_{10}=\\
+(11011101000110011001000)_2\\
+\approx (0.1101110)_2\times2^{(10111)_2}$\\
+\newline
+\begin{tabular}{|c|c|c|c|}
+  \hline0&0010111&0&1101110\\\hline
+\end{tabular}
+}
+浮点数的规格化： 非零浮点数的尾数最
+高位必须是1
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|cc|cc|c|}
+    \hline
+     \multicolumn{2}{|c|}{阶} & \multicolumn{2}{|c|}{尾数} & \multirow{2}{*}{总位数} \\
+    \cline{1-4}
+    阶符 & 阶码 & 数符 & 尾数 &\\
+    \hline
+    1位 & 7位 & 1位 & 7位 & 16位 \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\section{实型数表示}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|cc|cc|c|c|}
+    \hline
+    \multirow{2}{*}{精度} & \multirow{2}{*}{类型} & \multicolumn{2}{|c|}{阶} & \multicolumn{2}{|c|}{尾数} & \multirow{2}{*}{总位数} & \multirow{2}{*}{有效数字} \\
+    \cline{3-6}
+    && 阶符 & 阶码 & 数符 & 尾数 && \\
+    \hline
+    单精度 & float & 1位 & 7位 & 1位 & 23位 & 32位4字节 & 7位 \\
+    双精度 & double & 1位 & 11位 & 1位 & 51位 & 64位8字节 & 15位 \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\section{逻辑运算}
+
+二进制数值表示与计算
+\textbf{逻辑运算符}连接\textbf{逻辑变量}，构成\textbf{逻辑表达式}，结果为\textbf{逻辑值}
+
+\marginpar{
+  \raggedright 
+  \begin{itemize}
+  \item 逻辑与：
+  \begin{tabular}{ccccc}
+    & 1 & 1 & 0 & 0 \\
+    $+$ & 1 & 0 & 1 & 0 \\\hline
+    & 1 & 1 & 1 & 0 \\
+  \end{tabular}
+  \item 逻辑或：
+  \begin{tabular}{ccccc}
+    & 1 & 1 & 0 & 0 \\
+    $\times $ & 1 & 0 & 1 & 0 \\\hline
+    & 1 & 0 & 0 & 0 \\
+  \end{tabular}
+  \item 逻辑异或：
+  \begin{tabular}{ccccc}
+    & 1 & 1 & 0 & 0 \\
+    $\oplus $ & 1 & 0 & 1 & 0 \\\hline
+    & 1 & 0 & 0 & 1 \\
+  \end{tabular}
+  \end{itemize}  
+}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{cccc}
+    \hline
+    逻辑非 & NOT & $A'$ or $\overline{A}$ & \\
+    逻辑与 & AND & $+$ or $\bigcup $ & 一真即真 \\
+    逻辑或 & OR & $\times$ or $\bigcap $ & 全真才真 \\
+    逻辑异或 & XOR & $\oplus $ & 相同时为0不同时为1 \\
+    \hline
+  \end{tabular}
+  \caption{位运算表：位运算顺序从左到右}
+\end{table}
+
+
+\section{字符编码}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|rl|}
+    \hline
+    西文字符 & \\\hline
+    \textbf{ASCII码} & 7位编码，128个字符 \\
+    \hline\hline
+    汉字字符 & \\\hline
+    汉字\textbf{输入码} & 键盘输入 \\
+    汉字\textbf{国标码} & 信息交换 \\
+    汉字\textbf{机内码} & 计算机内部存储 \\
+    汉字\textbf{字形码} & 记录字形点阵 \\
+    \hline
+  \end{tabular}
+\end{table}
+
+
+\section{模数转换器ADC}
 \noindent
 音频信息处理时，将模拟信号转换为数字信号的装置。
-\subsection{音频编码}
+\section{音频编码}
 \begin{enumerate}
   \item 采样
   \item 量化
@@ -141,7 +340,7 @@
   \textbf{存储量（字节数）}=\textbf{采样频率}\times\textbf{采样精度}\times\textbf{声道数}
 \end{equation*}
 
-\subsection{图像编码}
+\section{图像编码}
 \begin{itemize}
   \item 按颜色分类：
   \begin{itemize}
@@ -150,14 +349,17 @@
     \item 彩色图像
   \end{itemize}
   \item 主要参数：
+\begin{table}[H]
+  \centering
+  \begin{tabular}{ccc}
+    \hline
+    \textbf{尺寸} & 图像大小 & 图像像素点个数\\
+    \textbf{分辨率} & 图像清晰度 & 注意屏幕分辨率与图像分辨率的区别 \\
+    \textbf{色深} & 图像RGB颜色值存储大小 & 超过24bit的颜色为真彩色 \\
+    \hline
+  \end{tabular}
+\end{table}
 
-\begin{tabular}{ccc}
-  \hline
-  \textbf{尺寸} & 图像大小 & 图像像素点个数\\
-  \textbf{分辨率} & 图像清晰度 & 注意屏幕分辨率与图像分辨率的区别 \\
-  \textbf{色深} & 图像RGB颜色值存储大小 & 超过24bit的颜色为真彩色 \\
-  \hline
-\end{tabular}
 
 \item 图像文件大小计算公式：
 \begin{equation*}
@@ -165,19 +367,23 @@
 \end{equation*}
 
 \end{itemize}
-\subsection{图形编码}
-\begin{tabular}{lll}
-  \hline
-  图形 & 图元 & \textbf{矢量}图 \\
-  \hline
-  图像 & 像素点 & \textbf{位}图 \\
-  \hline
-\end{tabular}
+\section{图形编码}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{lll}
+    \hline
+    图形 & 图元 & \textbf{矢量}图 \\
+    \hline
+    图像 & 像素点 & \textbf{位}图 \\
+    \hline
+  \end{tabular}
+\end{table}
 
-\subsection{信息编码}
+
+\section{信息编码}
 \noindent 用数字、字母等按规定的方法和位数来代表特定的信息。
 
-\subsection{特征编码}
+\section{特征编码}
 \noindent 将原始数据转化为数值形式的数据，用以\textbf{分类}
 \begin{description}
   \item[类别特征] 离散、非连续
@@ -197,9 +403,9 @@
   \hline
   \hline
 \end{tabular}
-\subsection{熵}
+\section{熵}
 随机变量不确定性的平均值
-\subsection{数据压缩}
+\section{数据压缩}
 信源编码时减少数据量的编码方案
 
 \begin{tabular}{cccc}
@@ -210,10 +416,11 @@
   有损压缩 & 牺牲部分冗余 & 高 & 多媒体文件 \\
   \hline
 \end{tabular}
-\newpage
-\section{人工智能的计算基础}
-\subsection{人工智能的硬件基础}
-\subsubsection{基本逻辑运算单元}
+
+
+\chapter{人工智能的计算基础}
+\section{人工智能的硬件基础}
+\subsection{基本逻辑运算单元}
 
 \begin{tabular}{lclcl}
   \hline
@@ -222,13 +429,18 @@
   \hline
 \end{tabular}
 
-\noindent 逻辑门：与门（AND GATE）、非门（NOT GATE）
+\marginpar{
+  \begin{itemize}
+  \item 逻辑门：
+  \end{itemize}
+  与门（AND GATE）、\\非门（NOT GATE）
+}
 
-\subsubsection{冯·诺依曼型计算机结构}
+\subsection{冯·诺依曼型计算机结构}
 \begin{center}
   \begin{tabular}{|l|l|l|}
     \hline
-    主要部件 & 功能 & 说明 \\
+    主要部件 & 功能 & 组成 \\
     \hline
     运算器ALU & 算术运算、逻辑运算 & 算术逻辑部件ALU、累加器、通用寄存器、状态寄存器 \\
     控制器CU & 指令解释、执行控制 & 指令寄存器IR、程序计数器PC、指令译码器ID \\
@@ -239,15 +451,22 @@
   \end{tabular}
 \end{center}
 
-\subsubsection{计算机存储体系}
-\begin{itemize}
-  \item 内存储器（内存）
-  \begin{description}
-    \item[随机存取存储器RAM] 断电数据消失
-    \item[只读存储器ROM] 写入后无法更改
-  \end{description}
-  \item 外存储器（外存）
-\end{itemize}
+\subsection{计算机存储体系}
+\marginpar{
+  \begin{itemize}
+    \item RAM 随机存取存储器
+    \item ROM 只读存储器
+  \end{itemize}
+}
+\begin{table}[H]
+  \begin{tabular}{|ll|}
+    \hline
+    内存储器（内存） & \\\hline
+    RAM & 断电数据消失 \\
+    ROM & 写入后无法更改 \\\hline\hline
+    外存储器（外存） & \\\hline
+  \end{tabular}
+\end{table}
 
 \begin{description}
   \item[位bit] 信息的最小单位
@@ -256,7 +475,7 @@
   \item[地址address] 存储单元的编号
 \end{description}
 
-\subsubsection{指令系统}
+\subsection{指令系统}
 \begin{description}
   \item[指令] \phantom{}
   \begin{itemize}
@@ -280,11 +499,11 @@
   \end{enumerate}
   \item[指令流水线技术]
 \end{description}
-\subsubsection{总线}
+\subsection{总线}
 计算机系统中各个功能部件（如CPU、内存、I/O设备）之间共享的公共通信干线
 
-\subsection{计算机的软件基础}
-\subsubsection{操作系统}
+\section{计算机的软件基础}
+\subsection{操作系统}
 \begin{itemize}
   \item 直接与硬件交流
   \item 最底层软件
@@ -292,7 +511,7 @@
   \item 用户通过操作系统来使用计算机系统
 \end{itemize}
 
-\subsubsection{多级存储体系}
+\subsection{多级存储体系}
 \begin{tabular}{cccc}
   \hline
   && 外存——内存——多级Cache——CPU寄存器 \\
@@ -303,15 +522,13 @@
   \hline
 \end{tabular}
 
-\subsubsection{磁盘管理}
+\subsection{磁盘管理}
 \begin{itemize}
-\item 磁盘数据存取：
+\item 磁盘数据存取以\textbf{簇}为单位
 
-\begin{itemize}
-  \item 以\textbf{簇}为单位
-  \item 1个\textbf{扇区}（Sector）=512字节
-  \item 调用磁盘\textbf{驱动程序}
-\end{itemize}
+\item 1个\textbf{扇区}（Sector）=512字节
+
+\item 调用\emph{磁盘驱动程序}
 
 \item 磁盘主要区域：
 \begin{description}
@@ -321,18 +538,19 @@
   \item[数据区] 文件化整为零后存放的区域
 \end{description}
 \end{itemize}
-\subsubsection{文件系统}
+\subsection{文件系统}
 多级目录结构
+\marginpar{例如：\\C:\textbackslash Users\textbackslash Administrator\textbackslash Documents\textbackslash 复习资料\textbackslash 计算机与人工智能.pdf}
 
 完整的文件描述（盘符、路径、文件名.扩展名）
 
-\subsubsection{进程}
+\subsection{进程}
 \begin{itemize}
 \item 概念：
 \begin{description}
   \item[程序] 指令序列
-  \item[作业] 面向用户的程序的执行实例
-  \item[进程] 面向计算机的程序的执行实例
+  \item[作业] 面向\emph{用户}的程序的执行实例
+  \item[进程] 面向\emph{计算机}的程序的执行实例
   \item[线程] 进程中的一个执行单元
 \end{description}
 
@@ -343,22 +561,24 @@
   \item[阻塞态] 等待某事件发生（I/O请求、申请缓冲空间……）
 \end{description}
 
-\item 动态\textbf{调度}：
+\item \textbf{动态调度}：
 
 进程在三种状态间转换
 \end{itemize}
-\subsection{程序与算法基础}
-\subsubsection{计算机语言发展}
+\section{程序与算法基础}
+\subsection{计算机语言发展}
 \begin{tabular}{lll}
-  
-  机器语言 & 二进制指令 & 机器直接运行 \\
-  汇编语言 & 助记符表示指令 & 汇编程序翻译 \\
-  高级语言 & 英语和数学语言 & 编译器或解释器翻译 \\
+  语言 & 符号 & 执行对象 \\
+  \hline
+  \textbf{机器语言} & \emph{二进制}指令 & 机器直接运行 \\
+  \textbf{汇编语言} & \emph{助记符}表示指令 & 汇编程序翻译 \\
+  \textbf{高级语言} & \emph{英语和数学}语言 & 编译器或解释器翻译 \\
   
 \end{tabular}
 
-\subsubsection{图灵机}
-\noindent 组成：
+\subsection{图灵机}
+\begin{itemize}
+  \item 组成：
 \begin{itemize}
   \item 无限长纸带
   \item 读写头
@@ -366,22 +586,22 @@
   \item 控制器
 \end{itemize}
 
-\noindent 图灵论题：
+\item 图灵论题：
 
-一个\textbf{可计算}问题是“当且仅当它在图灵机上经过有限步骤之后可以得到正确的结果”
-
-\subsubsection{计算复杂度}
+一个\textbf{可计算问题}是“当且仅当它在图灵机上经过\emph{有限}步骤后可以得到正确结果”
+\end{itemize}
+\subsection{计算复杂度}
 \noindent 库克论题：
 
-一个问题是\textbf{实际可计算}的当且仅当它
-能够在图灵机上经过多项式步骤得到正确结果
+一个\textbf{实际可计算问题}是“当且仅当它
+能在图灵机上经过\emph{多项式}步骤得到正确结果”
 
 \begin{description}
   \item[时间复杂度] 计算所需的步数或指令条数
   \item[空间复杂度] 计算所需的存储单元数
 \end{description}
 
-\subsubsection{算法}
+\subsection{算法}
 \begin{itemize}
 \item 算法：
 
@@ -396,10 +616,7 @@
   \item[有一个或多个输出]
 \end{description}
 \end{itemize}
-\subsubsection{流程图}
-
-
-
+\subsection{流程图}
 \begin{itemize}
 \item 算法的图形化表示
 
@@ -408,22 +625,22 @@
   起止框 & 输入输出框 & 处理框 & 判断框 & 流向线 & 连接点 & 注释框 \\
   \hline
   \begin{tikzpicture}[baseline=(startstop.base),
-    startstop/.style = {rectangle,rounded corners = 9pt,align = center}]
+    startstop/.style = {thick,rectangle,rounded corners = 9pt,align = center}]
     \node (startstop)[draw,startstop]{开始/终止};
   \end{tikzpicture}
   &
-  \begin{tikzpicture}[baseline=(a.base)]\node[draw,trapezium,trapezium left angle = 70,trapezium right angle = 110,text centered](a){输入/输出};\end{tikzpicture}
+  \begin{tikzpicture}[baseline=(a.base)]\node[draw,thick,trapezium,trapezium left angle = 70,trapezium right angle = 110,text centered](a){输入/输出};\end{tikzpicture}
   &
-  \begin{tikzpicture}[baseline=(a.base)]\node[draw,rectangle,text centered](a){处理};\end{tikzpicture}
+  \begin{tikzpicture}[baseline=(a.base)]\node[draw,thick,rectangle,text centered](a){处理};\end{tikzpicture}
   &
-  \begin{tikzpicture}[baseline=(a.base)]\node[draw,diamond,aspect = 2,text centered](a){判断};\end{tikzpicture}
+  \begin{tikzpicture}[baseline=(a.base)]\node[draw,thick,diamond,aspect = 2,text centered](a){判断};\end{tikzpicture}
   &
   \begin{tikzpicture}[]\draw[->,>={Stealth[round,scale = 1.5]}](0,0)--(1,0) ;\end{tikzpicture}
   &
-  \begin{tikzpicture}[baseline=(connection.base),connection/.style = {circle,align = center}]\node(connection)[draw,connection]{连接};\end{tikzpicture}
+  \begin{tikzpicture}[baseline=(connection.base),connection/.style = {thick,circle,align = center}]\node(connection)[draw,connection]{连接};\end{tikzpicture}
   &
   \begin{tikzpicture}[baseline=(annotation.base),
-    node distance = 5mm and 5mm,
+    node distance = 5mm and 5mm,thick,
     nrb/.style={
       rectangle,draw=none,align=center,
       append after command={
@@ -433,7 +650,7 @@
           (\tikzlastnode.south west) --
           (\tikzlastnode.north west) --
           (\tikzlastnode.north east);
-          \draw [-,dotted,thick] (0,0)--(annotation.west);
+          \draw [-,dotted] (0,0)--(annotation.west);
         }
       }
     }
@@ -445,14 +662,16 @@
 \end{tabular}
 
 \item 基本结构：
+\begin{itemize}
+  \item 顺序结构：
   \begin{figure}[H]
     \centering
     \begin{tikzpicture}[
-      node distance = 5mm and 5mm,
+      thick,node distance = 5mm and 5mm,
       startstop/.style = {rectangle,rounded corners,text centered},
       process/.style = {rectangle,text centered},
       io/.style = {trapezium,trapezium left angle = 70,trapezium right angle = 110,text centered},
-      arrow/.style = {thick,->,>=stealth}
+      arrow/.style = {->,>=stealth}
     ]
       \node (start)[draw,startstop]{开始};
       \node (input)[draw,io,below = of start]{输入半径$R$};
@@ -460,75 +679,77 @@
       \node (process2)[draw,process,below = of process1]{令$L=2\pi\times R$};
       \node (output)[draw,io,below = of process2]{输出周长$L$，面积$S$};
       \node (stop)[draw,startstop,below = of output]{结束};
-      \draw [thick,->,>=stealth] (start.south) -- (input.north);
-      \draw [thick,->,>=stealth] (input.south) -- (process1.north);
-      \draw [thick,->,>=stealth] (process1.south) -- (process2.north);
-      \draw [thick,->,>=stealth] (process2.south) -- (output.north);
-      \draw [thick,->,>=stealth] (output.south) -- (stop.north);
+      \draw [->,>=stealth] (start.south) -- (input.north);
+      \draw [->,>=stealth] (input.south) -- (process1.north);
+      \draw [->,>=stealth] (process1.south) -- (process2.north);
+      \draw [->,>=stealth] (process2.south) -- (output.north);
+      \draw [->,>=stealth] (output.south) -- (stop.north);
     \end{tikzpicture}
-    \caption{顺序结构：输入圆的半径R，输出圆的周长和面积}
+    \caption{输入圆的半径R，输出圆的周长和面积}
   \end{figure}
+  \item 循环结构:
   \begin{figure}[H]
     \centering
     \begin{tikzpicture}[
-      node distance = 5mm and 5mm,
+      thick,node distance = 5mm and 5mm,
       startstop/.style = {rectangle,rounded corners,text centered},
       process/.style = {rectangle,text centered},
       io/.style = {trapezium,trapezium left angle = 70,trapezium right angle = 110,text centered},
-      arrow/.style = {thick,->,>=stealth},
+      arrow/.style = {->,>=stealth},
       decision/.style = {diamond,aspect = 2,inner sep = 0,text centered}
     ]
       \node (start)[draw,startstop]{开始};
       \node (input)[draw,io,below = of start]{输入半径$R$};
-      \node (decision)[draw,decision,below = of input] {判断$R>=0$};
+      \node (decision)[draw,decision,below = of input] {判断$R\geq 0$};
       \node (process1)[draw,process,below = of decision]{令$S=R$};
       \node (process2)[draw,process,right = of process1]{令$S=-R$};
       \node (output)[draw,io,below = of process1]{输出$S$};
       \node (stop)[draw,startstop,below = of output]{结束};
 
-      \path (start.south) edge[thick,->,>=stealth] (input.north);
-      \path (input.south) edge[thick,->,>=stealth] (decision.north);
+      \path (start.south) edge[->,>=stealth] (input.north);
+      \path (input.south) edge[->,>=stealth] (decision.north);
       \draw [thick,->,>=stealth] (decision.east) -| (process2.north) node[midway,right]{\tiny 否};
-      \path (decision.south) edge[thick,->,>=stealth] node[midway,right]{\tiny 是} (process1.north);
-      \path (process1.south) edge[thick,->,>=stealth] (output.north);
-      \draw [thick,-] (process2.south) |- ($(process1.south)!0.5!(output.north)$);
-      \path (output.south) edge[thick,->,>=stealth] (stop.north);
+      \path (decision.south) edge[->,>=stealth] node[midway,right]{\tiny 是} (process1.north);
+      \path (process1.south) edge[->,>=stealth] (output.north);
+      \draw [-] (process2.south) |- ($(process1.south)!0.5!(output.north)$);
+      \path (output.south) edge[->,>=stealth] (stop.north);
     \end{tikzpicture}
-    \caption{选择结构:输入任意常数R，输出R的绝对值S}
+    \caption{输入任意常数R，输出R的绝对值S}
   \end{figure}
+  \item 选择结构:
   \begin{figure}[H]
     \centering
     \begin{tikzpicture}[
-      node distance = 5mm and 5mm,
+      thick,node distance = 5mm and 5mm,
       startstop/.style = {rectangle,rounded corners,text centered},
       process/.style = {rectangle,text centered},
       io/.style = {trapezium,trapezium left angle = 70,trapezium right angle = 110,text centered},
-      arrow/.style = {thick,->,>=stealth},
+      arrow/.style = {->,>=stealth},
       decision/.style = {diamond,aspect = 2,inner sep = 0,text centered}
       ]
       \node (start)[draw,startstop]{开始};
       \node (input)[draw,io,below = of start]{输入$K$};
       \node (definition1)[draw,process,below = of input]{令$I=0$};
       \node (definition2)[draw,process,below = of definition1]{令$T=1$};
-      \node (decision)[draw,decision,below = of definition2] {判断$I<=K$};
+      \node (decision)[draw,decision,below = of definition2] {判断$I\leq K$};
       \node (process1)[draw,process,below = of decision]{令$T=T+I$};
       \node (process2)[draw,process,below = of process1]{令$I=I+1$};
       \node (output)[draw,io,below = of process2]{输出$T$};
       \node (stop)[draw,startstop,below = of output]{结束};
 
-      \path (start.south) edge[thick,->,>=stealth] (input.north);
-      \path (input.south) edge[thick,->,>=stealth] (definition1.north);
-      \path (definition1.south) edge[thick,->,>=stealth] (definition2.north);
-      \path (definition2.south) edge[thick,->,>=stealth] (decision.north);
-      \path (decision.south) edge[thick,->,>=stealth] node[midway,right]{\tiny 是} (process1.north);
+      \path (start.south) edge[->,>=stealth] (input.north);
+      \path (input.south) edge[->,>=stealth] (definition1.north);
+      \path (definition1.south) edge[->,>=stealth] (definition2.north);
+      \path (definition2.south) edge[->,>=stealth] (decision.north);
+      \path (decision.south) edge[->,>=stealth] node[midway,right]{\tiny 是} (process1.north);
       \path (process1.south) edge[thick,->,>=stealth] (process2.north);
-      \draw [thick,-] (process2.south) -- ($(process2.south)!0.3!(output.north)$) --++(-2,0) |- ($(definition2.south)!0.5!(decision.north)$);
-      \draw [thick,->,>=stealth] (decision.east) --++(.5,0) |- node[midway,right]{\tiny 否} ($(process2.south)!0.7!(output.north)$) -- (output.north);
+      \draw [-] (process2.south) -- ($(process2.south)!0.3!(output.north)$) --++(-2,0) |- ($(definition2.south)!0.5!(decision.north)$);
+      \draw [->,>=stealth] (decision.east) --++(.5,0) |- node[midway,right]{\tiny 否} ($(process2.south)!0.7!(output.north)$) -- (output.north);
       \path (output.south) edge[thick,->,>=stealth] (stop.north);
     \end{tikzpicture}
-    \caption{循环结构:输入任意自然数K，输出自然数1到K的和}
+    \caption{输入任意自然数K，输出自然数1到K的和}
   \end{figure}
-     
+\end{itemize}     
 
 \item 常见算法：
 
@@ -538,23 +759,17 @@
   \end{tabular}
 \end{center}
 \end{itemize}
-\subsection{并行计算机体系结构}
-\subsubsection{并行计算}
-\begin{itemize}
-\item 并行计算：
+\section{并行计算机体系结构}
+\subsection{并行计算}
+\begin{description}
+\item[并行计算] 同时使用多台计算机或多处理器同时工作以提高计算速度和处理能力的计算方式。
+\item[特点] 软件算法复杂、硬件结构复杂（多核微处理器）
+\end{description}
+\subsection{摩尔定律}
+\noindent 微处理器的处理能力每\textbf{18个月到24个月}将增加一倍
 
-同时使用多台计算机或多处理器同时工作以提高计算速度和处理能力的计算方式。
-
-\item 特点：
-
-软件算法复杂、硬件结构复杂（多核微处理器）
-\end{itemize}
-\subsubsection{摩尔定律}
-\noindent 微处理器的处理能力每\textbf{18个月到24个月}将增加一
-倍
-\newpage
-\section{符号智能}
-\subsection{搜索与问题求解}
+\chapter{符号智能}
+\section{搜索与问题求解}
 \begin{description}
   \item[搜索] 人工智能技术中进行问题求解的基本技术
   \item[状态空间] 对智能体和环境当前情形的描述
@@ -564,7 +779,7 @@
   \item[最优解] 代价最小的解
 \end{description}
 
-\subsection{状态空间表示法}
+\section{状态空间表示法}
 
 \begin{description}
   \item[状态] 一组数据：$S_k=\left\{S_{k0},S_{k1},\dots\right\} $
@@ -578,7 +793,7 @@
   \item $S_0$为\textbf{初始状态}
   \item $G$为若干具体状态或满足某些性质的\textbf{路径}信息
 \end{itemize}
-\subsection{盲目图搜索策略}
+\section{盲目图搜索策略}
 
 \begin{tabular}{l|l}
   \hline
@@ -591,7 +806,7 @@
   \hline
 \end{tabular}
 
-\subsection{启发式搜索}
+\section{启发式搜索}
 \noindent 运用条件：
 \begin{itemize}
   \item 问题没有明确的解
@@ -613,13 +828,14 @@
 
 如果启发函数h(n)满足以下条件：
 \begin{equation*}
-  h(n_i)-h(n_j)\leq C(n_i,n_j) \text{且} h(t) = 0
+  h(n_i)-h(n_j)\leq C(n_i,n_j)\quad\text{且}\quad h(t) = 0
 \end{equation*}
 
-其中$n_j$是$n_i$的子节点，$t$目标节点，$C(n_i,n_j)$是$n_j$与$n_i$间的\textbf{耗散值}，
+其中$n_j$是$n_i$的子节点，$t$是目标节点，$C(n_i,n_j)$是$n_j$与$n_i$间的\textbf{耗散值}，
+
 则称启发函数h(n)满足\textbf{单调限制条件}。
 
-\subsection{知识表示}
+\section{知识表示}
 人类知识符号化或模型化，转换为机器内部的一种数据结构
 
 \begin{itemize}
@@ -630,7 +846,7 @@
 \end{itemize}
 
 
-\subsection{一阶谓词逻辑表示法}
+\section{一阶谓词逻辑表示法}
 \begin{equation*}
   P(x_1,x_2,\dots,x_n)
 \end{equation*}
@@ -638,7 +854,6 @@
 
 \begin{itemize}
   \item 谓词连接词：
-
   \begin{tabular}{cccc}
     \hline
     否定 & 合取 & 析取 & 蕴涵 \\
@@ -655,7 +870,7 @@
     \item 优点：
     \begin{description}
       \item[自然性] 与自然语言相近
-      \item[精确性] 只有真假两种取值
+      \item[精确性] 只取真假两种值
       \item[易实现] 便于计算机处理
       \item[严密性] 有严格的语法和语义规则
     \end{description}
@@ -667,19 +882,20 @@
     \end{description}
   \end{itemize}
 \end{itemize}
-\subsection{知识推理}
-\begin{description}
-  \item[确定性推理] 推理时所用的知识与证据都是确定的，推出的
-结论也是确定的，其真值或者为真或者为假。
-  \item[不确定性推理] 推理时所用的知识与证据是不确定的，推出的结论也是不确定的。
-  \begin{itemize}
-    \item 似然推理
-    \item 近似推理（模糊推理）
-  \end{itemize}
-\end{description}
-\newpage
-\section{机器学习基础}
-\subsection{机器学习的基本概念}
+\section{知识推理}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{lll}
+    & 推理时所用的知识与证据 & 推出的结论 \\\hline\hline
+    \textbf{确定性推理} & 确定 & 确定 \\\hline\hline
+    \textbf{不确定性推理} & 不确定 & 不确定 \\\hline
+    似然推理 && \\近似推理（模糊推理） && \\\hline
+  \end{tabular}
+\end{table}
+
+
+\chapter{机器学习基础}
+\section{机器学习的基本概念}
 \noindent 机器学习：
 
 通过算法解析数据、提取模式，并将这些模式转化为可用于预测或决策的模型
@@ -717,7 +933,7 @@
   \item[强化学习] 基于行为结果的奖励反馈调整策略
 \end{description}
 
-\subsection{回归}
+\section{回归}
 \begin{itemize}
 \item 回归：
 
@@ -738,7 +954,7 @@ y=\beta_0+\beta_1x_1+\beta_2x_2+\dots+\beta_nx_n+\epsilon
   \text{RSS}(\beta_0,\beta_1)=\sum_{i=1}^{n}(y_i-\hat{y_i})^2=\sum_{i=1}^{n}(y_i-\beta_0-\beta_1x_i)^2
 \end{equation*}
 \end{itemize}
-\subsection{分类}
+\section{分类}
 \begin{itemize}
 \item 分类：
 
@@ -759,7 +975,7 @@ y=\beta_0+\beta_1x_1+\beta_2x_2+\dots+\beta_nx_n+\epsilon
 
 做决策时层层递进的思考过程的监督学习模型
 \end{itemize}
-\subsection{降维}
+\section{降维}
 \noindent 降维：简化模型、避免维度灾难
 
 \noindent \textbf{主成分分析}（PCA）：
@@ -778,7 +994,7 @@ $X$为数据矩阵，$\bar{x}$为平均数据，$X_c$为中心化后的数据矩
 \end{equation*}
 $\lambda_i$为$X$最大的特征值，则$v_i$为最大特征值对应的特征向量
 
-\subsection{聚类}
+\section{聚类}
 \noindent 聚类：
 
 将事物根据其特征分组成多个簇
@@ -793,7 +1009,7 @@ $\lambda_i$为$X$最大的特征值，则$v_i$为最大特征值对应的特征�
   \item[重复迭代] 重复步骤3和4，直到质心变化极小或达到预设的迭代次数
 \end{description}
 
-\subsection{强化学习}
+\section{强化学习}
 \noindent 五个要素：
 \begin{description}
   \item[环境] 智能体所处的外部世界
@@ -812,11 +1028,11 @@ $\lambda_i$为$X$最大的特征值，则$v_i$为最大特征值对应的特征�
 
 
 
-\subsection{过拟合}
+\section{过拟合}
 模型过于复杂，以至于很好地拟合了训练数据中的噪声和异常值，导致在新数据上的表现较差。
-\newpage
-\section{神经网络与深度学习}
-\subsection{人工神经网络}
+
+\chapter{神经网络与深度学习}
+\section{人工神经网络}
 \noindent 人工神经网络（ANNs）：
 
 模拟生物神经网络结构和功能的计算模型
@@ -855,7 +1071,7 @@ $\lambda_i$为$X$最大的特征值，则$v_i$为最大特征值对应的特征�
   \item[$\cdot\;\hat{y_i}$] 模型预测的概率
 \end{description}
 
-\subsection{前馈神经网络}
+\section{前馈神经网络}
 \noindent 信息单向流动：输入层→隐藏层→输出层
 
 \noindent 感知器(Perceptron)：用于模式分类
@@ -890,7 +1106,7 @@ $\lambda_i$为$X$最大的特征值，则$v_i$为最大特征值对应的特征�
   \item[全连接层] 整合和转换特征，分类或回归预测
 \end{description}
 
-\subsection{反馈神经网络}
+\section{反馈神经网络}
 \noindent 信息循环传递
 
 \noindent 循环神经网络（RNN）：
@@ -905,7 +1121,7 @@ $\lambda_i$为$X$最大的特征值，则$v_i$为最大特征值对应的特征�
   \item[引入遗忘门、输入门、输出门结构] 控制信息结构
 \end{description}
 
-\subsection{深度学习}
+\section{深度学习}
 \begin{itemize}
   \item 基于人工神经网络的智能计算方法
   \item 机器学习的重要分支
@@ -933,9 +1149,9 @@ $\lambda_i$为$X$最大的特征值，则$v_i$为最大特征值对应的特征�
   \end{itemize}
 \end{itemize}
 
-\newpage
+
+\chapter{生成式人工智能}
 \section{生成式人工智能}
-\subsection{生成式人工智能}
 \begin{description}
   \item[应用场景] 生成文本、生成视频……
   \item[技术升级] 基于模板与规则→基于深度神经网络、融合专业场景
@@ -949,7 +1165,7 @@ $\lambda_i$为$X$最大的特征值，则$v_i$为最大特征值对应的特征�
   \item[AI Agent] 感知环境及需求、进行决策和执行动作的智能体
 \end{description}
 
-\subsection{对抗网络}
+\section{对抗网络}
 \noindent 使用两个网络互相竞争，称之为\textbf{对抗式}(adversarial)结构
 \begin{itemize}
   \item 生成式对抗网络(GAN)：
@@ -962,7 +1178,7 @@ $\lambda_i$为$X$最大的特征值，则$v_i$为最大特征值对应的特征�
   \end{itemize}
 \end{itemize}
 
-\subsection{Transformer模型}
+\section{Transformer模型}
 \noindent 基于自注意力机制（Self-attention）的神经网络
 
 \noindent 自注意力机制：
@@ -999,14 +1215,14 @@ N层*3个子层 = 3N
   \item 只对\textbf{隐层状态}做注意力计算
   \item 在解码过程中利用源语言信息
   \item 查询向量（q）来自\textbf{目标端}隐层状态
-  \item B.	键向量（k）和值向量（v）来自\textbf{源端}隐层状态
+  \item 键向量（k）和值向量（v）来自\textbf{源端}隐层状态
 \end{itemize}
 
 \noindent Transformer应用：
 
 自然语言处理、计算机视觉和语音识别以及\textbf{预训练语言模型}
 
-\subsection{视觉处理系统}
+\section{视觉处理系统}
 \begin{itemize}
   \item 图像采集
   \begin{itemize}
@@ -1019,7 +1235,7 @@ N层*3个子层 = 3N
   \item 评价
 \end{itemize}
 
-\subsection{扩散模型}
+\section{扩散模型}
 \begin{itemize}
   \item 训练阶段
   \begin{enumerate}
@@ -1033,7 +1249,7 @@ N层*3个子层 = 3N
   \end{enumerate}
 \end{itemize}
 
-\subsection{自然语言处理（NLP）}
+\section{自然语言处理（NLP）}
 
 研究能实现人与计算机之间用自然语言进行通信的各种理论和方法。
 
@@ -1046,7 +1262,7 @@ N层*3个子层 = 3N
   \item 语用 
 \end{enumerate}
 
-\subsection{大模型开发}
+\section{大模型开发}
 \begin{tabular}{llll}
   \hline
   预训练 & 通识教育 & 自监督学习 & 海量无标注数据 \\
@@ -1054,7 +1270,7 @@ N层*3个子层 = 3N
   \hline
 \end{tabular}
 
-\subsection{AI Agent}
+\section{AI Agent}
 \begin{itemize}
 \item AI Agent：
 
@@ -1073,10 +1289,11 @@ Agent = LLM + 记忆 + 规划技能+ 工具使用
 
 感知记忆模块、规划决策模块、工具和行动模块
 \end{itemize}
-\section{行为智能与群智能}
-\subsection{行为智能}
+
+\chapter{行为智能与群智能}
+\section{行为智能}
 通过\textbf{观察环境}，或通过\textbf{身体与环境的直接相互作用}产生的智能
-\subsection{群智能}
+\section{群智能}
 群居昆虫的集体行为
 
 \noindent 特点：
@@ -1111,7 +1328,7 @@ Agent = LLM + 记忆 + 规划技能+ 工具使用
   \end{enumerate}
 \end{itemize}
 
-\subsection{具身智能}
+\section{具身智能}
 基于物理身体进行感知和行动的智能系统
 \par\noindent\textbf{虚拟环境}
 \begin{description}
@@ -1139,12 +1356,12 @@ Agent = LLM + 记忆 + 规划技能+ 工具使用
   \item 任务
 \end{enumerate}
 
-\subsection{进化计算}
+\section{进化计算}
 \noindent 概念：
 \begin{description}
   \item[进化计算] 模仿生物遗传并运用于复杂的优化问题
   \item[遗传算法] 基于进化过程中信息遗传机制和优胜劣汰自然选择原则的算法
-  \item[基本遗传算法] Simple Genetic Algorithm(SGA)
+  \item[基本遗传算法] (SGA)\marginpar{Simple Genetic Algorithm\hrule}
 \end{description}
 
 \noindent 要素：
@@ -1171,9 +1388,9 @@ Agent = LLM + 记忆 + 规划技能+ 工具使用
     \item 计算最高适应值，输出最优值
   \end{enumerate}
 \end{description}
-\newpage
-\section{人工智能系统与应用}
-\subsection{自动驾驶系统}
+
+\chapter{人工智能系统与应用}
+\section{自动驾驶系统}
 \begin{itemize}
   \item 分级
 \begin{itemize}
@@ -1185,6 +1402,10 @@ Agent = LLM + 记忆 + 规划技能+ 工具使用
 
 
 
+
+
+\appendix
+\backmatter
 
 
 
